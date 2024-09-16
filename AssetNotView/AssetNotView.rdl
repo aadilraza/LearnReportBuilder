@@ -1,0 +1,1572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
+  <rd:ReportUnitType>Mm</rd:ReportUnitType>
+  <rd:ReportID>d50d1ad8-c886-4ca3-a1ad-0e1e1e98206c</rd:ReportID>
+  <am:AuthoringMetadata>
+    <am:CreatedBy>
+      <am:Name>PBIRB</am:Name>
+      <am:Version>15.7.1811.11</am:Version>
+    </am:CreatedBy>
+    <am:UpdatedBy>
+      <am:Name>PBIRB</am:Name>
+      <am:Version>15.7.1811.11</am:Version>
+    </am:UpdatedBy>
+    <am:LastModifiedTimestamp>2024-09-16T15:43:51.7347037Z</am:LastModifiedTimestamp>
+  </am:AuthoringMetadata>
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="Testing_Workspace_DEV_ADIL_DataSet_C_SQL">
+      <rd:SecurityType>None</rd:SecurityType>
+      <ConnectionProperties>
+        <DataProvider>PBIDATASET</DataProvider>
+        <ConnectString>Data Source=pbiazure://api.high.powerbigov.us/;Identity Provider="https://login.microsoftonline.us/common, https://high.analysis.usgovcloudapi.net/powerbi/api, f0b72488-7082-488a-a7e8-eada97bd842d";Initial Catalog=sobe_wowvirtualserver-02ff196b-b0ec-4608-a419-3928c1fb9a8f;Integrated Security=ClaimsToken</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>3a8468df-71a1-4059-b13d-84f8fc242d40</rd:DataSourceID>
+      <rd:PowerBIWorkspaceName>Testing_Workspace_DEV_ADIL</rd:PowerBIWorkspaceName>
+      <rd:PowerBIDatasetName>DataSet_C_SQL</rd:PowerBIDatasetName>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="MinMaxDurationDateDs">
+      <Query>
+        <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>DAX</CommandType>
+            <Type>Query</Type>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Column">
+                      <ColumnName>[MinDate]</ColumnName>
+                    </ID>
+                    <ItemCaption>MinDate</ItemCaption>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Column">
+                      <ColumnName>[MaxDate]</ColumnName>
+                    </ID>
+                    <ItemCaption>MaxDate</ItemCaption>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>Model</From>
+              <Filter>
+                <FilterItems />
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement>EVALUATE 
+VAR MinDate = CALCULATE(MIN('AssetNotViewedDS'[AssetAV.RecordingEnded]))
+VAR MaxDate = CALCULATE(MAX('AssetNotViewedDS'[AssetAV.RecordingEnded]))
+RETURN 
+ROW("MinDate", MinDate, "MaxDate", MaxDate)</Statement>
+              <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+        <CommandText>EVALUATE 
+VAR MinDate = CALCULATE(MIN('AssetNotViewedDS'[AssetAV.RecordingEnded]))
+VAR MaxDate = CALCULATE(MAX('AssetNotViewedDS'[AssetAV.RecordingEnded]))
+RETURN 
+ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="MinDate">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>[MinDate]</DataField>
+        </Field>
+        <Field Name="MaxDate">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>[MaxDate]</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="AssetNotViewedDS">
+      <Query>
+        <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="FromAssetNotViewedDSAssetAVRecordingStarted">
+            <Value>=Format((Parameters!FromAssetNotViewedDSAssetAVRecordingStarted.Value), "yyyy-MM-dd")</Value>
+          </QueryParameter>
+          <QueryParameter Name="ToAssetNotViewedDSAssetAVRecordingStarted">
+            <Value>=Format((Parameters!ToAssetNotViewedDSAssetAVRecordingStarted.Value), "yyyy-MM-dd")</Value>
+          </QueryParameter>
+          <QueryParameter Name="AssetNotViewedDSName">
+            <Value>=Parameters!AssetNotViewedDSName.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>DAX</CommandType>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetNotViewedDS</DimensionName>
+                      <HierarchyName>Name</HierarchyName>
+                      <HierarchyUniqueName>[AssetNotViewedDS].[Name]</HierarchyUniqueName>
+                      <LevelName>Name</LevelName>
+                      <UniqueName>[AssetNotViewedDS].[Name].[Name]</UniqueName>
+                    </ID>
+                    <ItemCaption>Name</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetNotViewedDS</DimensionName>
+                      <HierarchyName>Unit.Name</HierarchyName>
+                      <HierarchyUniqueName>[AssetNotViewedDS].[Unit.Name]</HierarchyUniqueName>
+                      <LevelName>Unit.Name</LevelName>
+                      <UniqueName>[AssetNotViewedDS].[Unit.Name].[Unit.Name]</UniqueName>
+                    </ID>
+                    <ItemCaption>Unit.Name</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetNotViewedDS</DimensionName>
+                      <HierarchyName>User.UserInfo.FName</HierarchyName>
+                      <HierarchyUniqueName>[AssetNotViewedDS].[User.UserInfo.FName]</HierarchyUniqueName>
+                      <LevelName>User.UserInfo.FName</LevelName>
+                      <UniqueName>[AssetNotViewedDS].[User.UserInfo.FName].[User.UserInfo.FName]</UniqueName>
+                    </ID>
+                    <ItemCaption>User.UserInfo.FName</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetNotViewedDS</DimensionName>
+                      <HierarchyName>User.UserInfo.LName</HierarchyName>
+                      <HierarchyUniqueName>[AssetNotViewedDS].[User.UserInfo.LName]</HierarchyUniqueName>
+                      <LevelName>User.UserInfo.LName</LevelName>
+                      <UniqueName>[AssetNotViewedDS].[User.UserInfo.LName].[User.UserInfo.LName]</UniqueName>
+                    </ID>
+                    <ItemCaption>User.UserInfo.LName</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetNotViewedDS</DimensionName>
+                      <HierarchyName>AssetAV.RecordingStarted</HierarchyName>
+                      <HierarchyUniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
+                      <LevelName>AssetAV.RecordingStarted</LevelName>
+                      <UniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted].[AssetAV.RecordingStarted]</UniqueName>
+                    </ID>
+                    <ItemCaption>AssetAV.RecordingStarted</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetNotViewedDS</DimensionName>
+                      <HierarchyName>Category.Name</HierarchyName>
+                      <HierarchyUniqueName>[AssetNotViewedDS].[Category.Name]</HierarchyUniqueName>
+                      <LevelName>Category.Name</LevelName>
+                      <UniqueName>[AssetNotViewedDS].[Category.Name].[Category.Name]</UniqueName>
+                    </ID>
+                    <ItemCaption>Category.Name</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetNotViewedDS</DimensionName>
+                      <HierarchyName>EvidenceRelations.1.ValueDisplayName</HierarchyName>
+                      <HierarchyUniqueName>[AssetNotViewedDS].[EvidenceRelations.1.ValueDisplayName]</HierarchyUniqueName>
+                      <LevelName>EvidenceRelations.1.ValueDisplayName</LevelName>
+                      <UniqueName>[AssetNotViewedDS].[EvidenceRelations.1.ValueDisplayName].[EvidenceRelations.1.ValueDisplayName]</UniqueName>
+                    </ID>
+                    <ItemCaption>EvidenceRelations.1.ValueDisplayName</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>Model</From>
+              <Filter>
+                <FilterItems>
+                  <FilterItem>
+                    <HierarchyUniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
+                    <Condition xsi:type="Range">
+                      <Basis>Member</Basis>
+                      <From />
+                      <FromParametrized>true</FromParametrized>
+                      <To />
+                      <ToParametrized>true</ToParametrized>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[AssetNotViewedDS].[Name]</HierarchyUniqueName>
+                    <Condition xsi:type="Contains">
+                      <Basis>Caption</Basis>
+                      <Expression />
+                      <Parametrized>true</Parametrized>
+                    </Condition>
+                  </FilterItem>
+                </FilterItems>
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties>
+                <IncludeMemberValue>true</IncludeMemberValue>
+              </QueryProperties>
+            </QuerySpecification>
+            <Query>
+              <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+VAR vToAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@ToAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @ToAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vToAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+VAR vAssetNotViewedDSName1 = IF(PATHLENGTH(@AssetNotViewedDSName) = 1, IF(@AssetNotViewedDSName &lt;&gt; "", @AssetNotViewedDSName, BLANK()), IF(PATHITEM(@AssetNotViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetNotViewedDSName, 2), BLANK()))
+VAR vAssetNotViewedDSName1ALL = PATHLENGTH(@AssetNotViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetNotViewedDSName, 1, 1) &lt; 1
+EVALUATE SUMMARIZECOLUMNS('AssetNotViewedDS'[Name], 'AssetNotViewedDS'[Unit.Name], 'AssetNotViewedDS'[User.UserInfo.FName], 'AssetNotViewedDS'[User.UserInfo.LName], 'AssetNotViewedDS'[AssetAV.RecordingStarted], 'AssetNotViewedDS'[Category.Name], 'AssetNotViewedDS'[EvidenceRelations.1.ValueDisplayName], FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)) &amp;&amp; (vToAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &lt;= DATEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1))), FILTER(VALUES('AssetNotViewedDS'[Name]), (vAssetNotViewedDSName1ALL || IF(vAssetNotViewedDSName1 &lt;&gt; "", SEARCH(vAssetNotViewedDSName1, 'AssetNotViewedDS'[Name], 1, 0) &gt; 0, TRUE))))</Statement>
+              <ParameterDefinitions>
+                <ParameterDefinition>
+                  <Name>FromAssetNotViewedDSAssetAVRecordingStarted</Name>
+                  <Usage>RangeFrom</Usage>
+                  <DbType>DateTime</DbType>
+                  <DefaultValues>
+                    <DefaultValue />
+                  </DefaultValues>
+                  <Caption>From AssetAV.RecordingStarted</Caption>
+                  <HierarchyUniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[AssetAV.RecordingStarted], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[AssetAV.RecordingStarted], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[AssetAV.RecordingStarted], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[AssetAV.RecordingStarted]", 'AssetNotViewedDS'[AssetAV.RecordingStarted]) order by 'AssetNotViewedDS'[AssetAV.RecordingStarted], [ParameterLevel]</Statement>
+                    <ParameterizedStatement>
+                      <ReferencedParameters />
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <AllowBlank>true</AllowBlank>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>ToAssetNotViewedDSAssetAVRecordingStarted</Name>
+                  <Usage>RangeTo</Usage>
+                  <DbType>DateTime</DbType>
+                  <DefaultValues>
+                    <DefaultValue />
+                  </DefaultValues>
+                  <Caption>To AssetAV.RecordingStarted</Caption>
+                  <HierarchyUniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[AssetAV.RecordingStarted], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[AssetAV.RecordingStarted], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[AssetAV.RecordingStarted], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[AssetAV.RecordingStarted]", 'AssetNotViewedDS'[AssetAV.RecordingStarted]) order by 'AssetNotViewedDS'[AssetAV.RecordingStarted], [ParameterLevel]</Statement>
+                    <ParameterizedStatement>
+                      <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[AssetAV.RecordingStarted], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[AssetAV.RecordingStarted], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[AssetAV.RecordingStarted], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[AssetAV.RecordingStarted]", 'AssetNotViewedDS'[AssetAV.RecordingStarted]) order by 'AssetNotViewedDS'[AssetAV.RecordingStarted], [ParameterLevel]</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>FromAssetNotViewedDSAssetAVRecordingStarted</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <AllowBlank>true</AllowBlank>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>AssetNotViewedDSName</Name>
+                  <Usage>Contains</Usage>
+                  <DefaultValues>
+                    <DefaultValue />
+                  </DefaultValues>
+                  <Caption>Name</Caption>
+                  <ParameterValuesQuery>
+                    <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+VAR vToAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@ToAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @ToAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vToAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[Name], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)) &amp;&amp; (vToAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &lt;= DATEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[Name]", 'AssetNotViewedDS'[Name]) order by 'AssetNotViewedDS'[Name], [ParameterLevel]</Statement>
+                    <ParameterizedStatement>
+                      <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+VAR vToAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@ToAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @ToAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vToAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[Name], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)) &amp;&amp; (vToAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &lt;= DATEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[Name]", 'AssetNotViewedDS'[Name]) order by 'AssetNotViewedDS'[Name], [ParameterLevel]</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>FromAssetNotViewedDSAssetAVRecordingStarted</Name>
+                        </ReferencedParameter>
+                        <ReferencedParameter>
+                          <Name>ToAssetNotViewedDSAssetAVRecordingStarted</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <AllowBlank>true</AllowBlank>
+                </ParameterDefinition>
+              </ParameterDefinitions>
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+        <CommandText>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+VAR vToAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@ToAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @ToAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vToAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+VAR vAssetNotViewedDSName1 = IF(PATHLENGTH(@AssetNotViewedDSName) = 1, IF(@AssetNotViewedDSName &lt;&gt; "", @AssetNotViewedDSName, BLANK()), IF(PATHITEM(@AssetNotViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetNotViewedDSName, 2), BLANK()))
+VAR vAssetNotViewedDSName1ALL = PATHLENGTH(@AssetNotViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetNotViewedDSName, 1, 1) &lt; 1
+EVALUATE SUMMARIZECOLUMNS('AssetNotViewedDS'[Name], 'AssetNotViewedDS'[Unit.Name], 'AssetNotViewedDS'[User.UserInfo.FName], 'AssetNotViewedDS'[User.UserInfo.LName], 'AssetNotViewedDS'[AssetAV.RecordingStarted], 'AssetNotViewedDS'[Category.Name], 'AssetNotViewedDS'[EvidenceRelations.1.ValueDisplayName], FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)) &amp;&amp; (vToAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &lt;= DATEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1))), FILTER(VALUES('AssetNotViewedDS'[Name]), (vAssetNotViewedDSName1ALL || IF(vAssetNotViewedDSName1 &lt;&gt; "", SEARCH(vAssetNotViewedDSName1, 'AssetNotViewedDS'[Name], 1, 0) &gt; 0, TRUE))))</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Name">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetNotViewedDS[Name]</DataField>
+        </Field>
+        <Field Name="Unit_Name">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetNotViewedDS[Unit.Name]</DataField>
+        </Field>
+        <Field Name="User_UserInfo_FName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetNotViewedDS[User.UserInfo.FName]</DataField>
+        </Field>
+        <Field Name="User_UserInfo_LName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetNotViewedDS[User.UserInfo.LName]</DataField>
+        </Field>
+        <Field Name="AssetAV_RecordingStarted">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetNotViewedDS[AssetAV.RecordingStarted]</DataField>
+        </Field>
+        <Field Name="Category_Name">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetNotViewedDS[Category.Name]</DataField>
+        </Field>
+        <Field Name="EvidenceRelations_1_ValueDisplayName">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetNotViewedDS[EvidenceRelations.1.ValueDisplayName]</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="AssetNotViewedDSName">
+      <Query>
+        <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="FromAssetNotViewedDSAssetAVRecordingStarted">
+            <Value>=Format((Parameters!FromAssetNotViewedDSAssetAVRecordingStarted.Value), "yyyy-MM-dd")</Value>
+          </QueryParameter>
+          <QueryParameter Name="ToAssetNotViewedDSAssetAVRecordingStarted">
+            <Value>=Format((Parameters!ToAssetNotViewedDSAssetAVRecordingStarted.Value), "yyyy-MM-dd")</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>DAX</CommandType>
+            <Type>Query</Type>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterCaption</MeasureName>
+                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterCaption</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterValue</MeasureName>
+                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterValue</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterLevel</MeasureName>
+                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterLevel</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>Model</From>
+              <Filter>
+                <FilterItems />
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+VAR vToAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@ToAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @ToAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vToAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[Name], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)) &amp;&amp; (vToAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &lt;= DATEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[Name]", 'AssetNotViewedDS'[Name]) order by 'AssetNotViewedDS'[Name], [ParameterLevel]</Statement>
+              <ParameterDefinitions>
+                <ParameterDefinition>
+                  <Name>FromAssetNotViewedDSAssetAVRecordingStarted</Name>
+                  <Usage>RangeFrom</Usage>
+                  <DbType>DateTime</DbType>
+                  <DefaultValues>
+                    <DefaultValue />
+                  </DefaultValues>
+                  <Caption>From AssetAV.RecordingStarted</Caption>
+                  <HierarchyUniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[AssetAV.RecordingStarted], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[AssetAV.RecordingStarted], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[AssetAV.RecordingStarted], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[AssetAV.RecordingStarted]", 'AssetNotViewedDS'[AssetAV.RecordingStarted]) order by 'AssetNotViewedDS'[AssetAV.RecordingStarted], [ParameterLevel]</Statement>
+                    <ParameterizedStatement>
+                      <ReferencedParameters />
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <AllowBlank>true</AllowBlank>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>ToAssetNotViewedDSAssetAVRecordingStarted</Name>
+                  <Usage>RangeTo</Usage>
+                  <DbType>DateTime</DbType>
+                  <DefaultValues>
+                    <DefaultValue />
+                  </DefaultValues>
+                  <Caption>To AssetAV.RecordingStarted</Caption>
+                  <HierarchyUniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[AssetAV.RecordingStarted], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[AssetAV.RecordingStarted], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[AssetAV.RecordingStarted], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[AssetAV.RecordingStarted]", 'AssetNotViewedDS'[AssetAV.RecordingStarted]) order by 'AssetNotViewedDS'[AssetAV.RecordingStarted], [ParameterLevel]</Statement>
+                    <ParameterizedStatement>
+                      <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[AssetAV.RecordingStarted], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[AssetAV.RecordingStarted], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[AssetAV.RecordingStarted], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[AssetAV.RecordingStarted]", 'AssetNotViewedDS'[AssetAV.RecordingStarted]) order by 'AssetNotViewedDS'[AssetAV.RecordingStarted], [ParameterLevel]</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>FromAssetNotViewedDSAssetAVRecordingStarted</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <AllowBlank>true</AllowBlank>
+                </ParameterDefinition>
+              </ParameterDefinitions>
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+        <rd:AutoGenerated>true</rd:AutoGenerated>
+        <rd:Hidden>true</rd:Hidden>
+        <CommandText>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+VAR vToAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@ToAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @ToAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
+VAR vToAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[Name], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)) &amp;&amp; (vToAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &lt;= DATEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[Name]", 'AssetNotViewedDS'[Name]) order by 'AssetNotViewedDS'[Name], [ParameterLevel]</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ParameterCaption">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>[ParameterCaption]</DataField>
+        </Field>
+        <Field Name="ParameterValue">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>[ParameterValue]</DataField>
+        </Field>
+        <Field Name="ParameterLevel">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>[ParameterLevel]</DataField>
+        </Field>
+        <Field Name="ParameterCaptionIndented">
+          <rd:TypeName>System.String</rd:TypeName>
+          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>61.19499mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>55.05666mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>50.18833mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>31.985mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>47.50722mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>47.225mm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>44.05mm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>10.23333mm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox2">
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Asset Name</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontSize>14pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox3">
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Unit</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontSize>14pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox5">
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>User</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontSize>14pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox1">
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Category</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontSize>14pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox6">
+                          <rd:DefaultName>Textbox6</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Case ID</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontSize>14pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox8">
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Description</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontSize>14pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox9">
+                          <rd:DefaultName>Textbox9</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Captured On</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontSize>14pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>8.32833mm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Name">
+                          <rd:DefaultName>Name</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Name.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Unit_Name">
+                          <rd:DefaultName>Unit_Name</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Unit_Name.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="User_UserInfo_FName">
+                          <rd:DefaultName>User_UserInfo_FName</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!User_UserInfo_FName.Value &amp; " " &amp; Fields!User_UserInfo_LName.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Category_Name">
+                          <rd:DefaultName>Category_Name</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Category_Name.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="EvidenceRelations_1_ValueDisplayName">
+                          <rd:DefaultName>EvidenceRelations_1_ValueDisplayName</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!EvidenceRelations_1_ValueDisplayName.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox10">
+                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="AssetAV_RecordingStarted">
+                          <rd:DefaultName>AssetAV_RecordingStarted</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!AssetAV_RecordingStarted.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Normal</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <FixedData>true</FixedData>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Details" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>AssetNotViewedDS</DataSetName>
+            <Top>0mm</Top>
+            <Left>0mm</Left>
+            <Height>18.56166mm</Height>
+            <Width>337.2072mm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>19.40277mm</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Body>
+      <Width>337.2072mm</Width>
+      <Page>
+        <PageHeader>
+          <Height>15.875mm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="ReportName">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ReportName</Value>
+                      <Style>
+                        <FontSize>16pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>0mm</Top>
+              <Left>0mm</Left>
+              <Height>15.16944mm</Height>
+              <Width>75.16501mm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>15.80445mm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="PageNumber">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!PageNumber</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.70556mm</Top>
+              <Left>0mm</Left>
+              <Height>15.09889mm</Height>
+              <Width>37.06499mm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="ExecutionTime">
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.35278mm</Top>
+              <Left>286.4072mm</Left>
+              <Height>15.09889mm</Height>
+              <Width>50.8mm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2cm</LeftMargin>
+        <RightMargin>2cm</RightMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="FromAssetNotViewedDSAssetAVRecordingStarted">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>MinMaxDurationDateDs</DataSetName>
+          <ValueField>MinDate</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>From Captured On</Prompt>
+      <cl:ComponentMetadata>
+        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
+      </cl:ComponentMetadata>
+    </ReportParameter>
+    <ReportParameter Name="ToAssetNotViewedDSAssetAVRecordingStarted">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>MinMaxDurationDateDs</DataSetName>
+          <ValueField>MaxDate</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>To Captured On</Prompt>
+      <cl:ComponentMetadata>
+        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
+      </cl:ComponentMetadata>
+    </ReportParameter>
+    <ReportParameter Name="AssetNotViewedDSName">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value />
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Asset Name</Prompt>
+      <cl:ComponentMetadata>
+        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
+      </cl:ComponentMetadata>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>FromAssetNotViewedDSAssetAVRecordingStarted</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ToAssetNotViewedDSAssetAVRecordingStarted</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>AssetNotViewedDSName</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+</Report>
