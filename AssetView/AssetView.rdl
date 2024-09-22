@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1811.11</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-09-16T15:54:28.1805738Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-09-22T10:44:14.6271137Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -22,82 +22,16 @@
         <DataProvider>PBIDATASET</DataProvider>
         <ConnectString>Data Source=pbiazure://api.high.powerbigov.us/;Identity Provider="https://login.microsoftonline.us/common, https://high.analysis.usgovcloudapi.net/powerbi/api, f0b72488-7082-488a-a7e8-eada97bd842d";Initial Catalog=sobe_wowvirtualserver-02ff196b-b0ec-4608-a419-3928c1fb9a8f;Integrated Security=ClaimsToken</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>9f67e903-b048-4e3e-8f9c-c8099c1ca250</rd:DataSourceID>
+      <rd:DataSourceID>e1b12d62-822e-4c5e-8b53-76446daacf30</rd:DataSourceID>
       <rd:PowerBIWorkspaceName>Testing_Workspace_DEV_ADIL</rd:PowerBIWorkspaceName>
       <rd:PowerBIDatasetName>DataSet_C_SQL</rd:PowerBIDatasetName>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="MinMaxDateDs">
-      <Query>
-        <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
-        <rd:DesignerState>
-          <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
-            <CommandType>DAX</CommandType>
-            <Type>Query</Type>
-            <QuerySpecification xsi:type="MDXQuerySpecification">
-              <Select>
-                <Items>
-                  <Item>
-                    <ID xsi:type="Column">
-                      <ColumnName>[MinDate]</ColumnName>
-                    </ID>
-                    <ItemCaption>MinDate</ItemCaption>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Column">
-                      <ColumnName>[MaxDate]</ColumnName>
-                    </ID>
-                    <ItemCaption>MaxDate</ItemCaption>
-                  </Item>
-                </Items>
-              </Select>
-              <AutoExecute>false</AutoExecute>
-              <From>Model</From>
-              <Filter>
-                <FilterItems />
-              </Filter>
-              <Calculations />
-              <Aggregates />
-              <QueryProperties />
-            </QuerySpecification>
-            <Query>
-              <Statement>EVALUATE 
-VAR MinDate = CALCULATE(MIN('AssetViewedDs'[AssetViewReason.ViewDateTime]))
-VAR MaxDate = CALCULATE(MAX('AssetViewedDs'[AssetViewReason.ViewDateTime]))
-RETURN 
-ROW("MinDate", MinDate, "MaxDate", MaxDate)</Statement>
-              <ParameterDefinitions />
-            </Query>
-          </QueryDefinition>
-        </rd:DesignerState>
-        <CommandText>EVALUATE 
-VAR MinDate = CALCULATE(MIN('AssetViewedDs'[AssetViewReason.ViewDateTime]))
-VAR MaxDate = CALCULATE(MAX('AssetViewedDs'[AssetViewReason.ViewDateTime]))
-RETURN 
-ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="MinDate">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>[MinDate]</DataField>
-        </Field>
-        <Field Name="MaxDate">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>[MaxDate]</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
     <DataSet Name="AssetViewedDs">
       <Query>
         <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
         <QueryParameters>
-          <QueryParameter Name="FromAssetViewedDSAssetViewReasonViewDateTime">
-            <Value>=Format((Parameters!FromAssetViewedDSAssetViewReasonViewDateTime.Value), "yyyy-MM-dd")</Value>
-          </QueryParameter>
-          <QueryParameter Name="ToAssetViewedDSAssetViewReasonViewDateTime">
-            <Value>=Format((Parameters!ToAssetViewedDSAssetViewReasonViewDateTime.Value), "yyyy-MM-dd")</Value>
-          </QueryParameter>
           <QueryParameter Name="AssetViewedDSName">
             <Value>=Parameters!AssetViewedDSName.Value</Value>
           </QueryParameter>
@@ -133,78 +67,34 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
                   <Item>
                     <ID xsi:type="Level">
                       <DimensionName>AssetViewedDS</DimensionName>
-                      <HierarchyName>User.UserInfo.FName</HierarchyName>
-                      <HierarchyUniqueName>[AssetViewedDS].[User.UserInfo.FName]</HierarchyUniqueName>
-                      <LevelName>User.UserInfo.FName</LevelName>
-                      <UniqueName>[AssetViewedDS].[User.UserInfo.FName].[User.UserInfo.FName]</UniqueName>
+                      <HierarchyName>Users</HierarchyName>
+                      <HierarchyUniqueName>[AssetViewedDS].[Users]</HierarchyUniqueName>
+                      <LevelName>Users</LevelName>
+                      <UniqueName>[AssetViewedDS].[Users].[Users]</UniqueName>
                     </ID>
-                    <ItemCaption>User.UserInfo.FName</ItemCaption>
+                    <ItemCaption>Users</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
                   <Item>
                     <ID xsi:type="Level">
                       <DimensionName>AssetViewedDS</DimensionName>
-                      <HierarchyName>User.UserInfo.LName</HierarchyName>
-                      <HierarchyUniqueName>[AssetViewedDS].[User.UserInfo.LName]</HierarchyUniqueName>
-                      <LevelName>User.UserInfo.LName</LevelName>
-                      <UniqueName>[AssetViewedDS].[User.UserInfo.LName].[User.UserInfo.LName]</UniqueName>
+                      <HierarchyName>Category</HierarchyName>
+                      <HierarchyUniqueName>[AssetViewedDS].[Category]</HierarchyUniqueName>
+                      <LevelName>Category</LevelName>
+                      <UniqueName>[AssetViewedDS].[Category].[Category]</UniqueName>
                     </ID>
-                    <ItemCaption>User.UserInfo.LName</ItemCaption>
+                    <ItemCaption>Category</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
                   <Item>
                     <ID xsi:type="Level">
                       <DimensionName>AssetViewedDS</DimensionName>
-                      <HierarchyName>Category.Name</HierarchyName>
-                      <HierarchyUniqueName>[AssetViewedDS].[Category.Name]</HierarchyUniqueName>
-                      <LevelName>Category.Name</LevelName>
-                      <UniqueName>[AssetViewedDS].[Category.Name].[Category.Name]</UniqueName>
+                      <HierarchyName>CaseID</HierarchyName>
+                      <HierarchyUniqueName>[AssetViewedDS].[CaseID]</HierarchyUniqueName>
+                      <LevelName>CaseID</LevelName>
+                      <UniqueName>[AssetViewedDS].[CaseID].[CaseID]</UniqueName>
                     </ID>
-                    <ItemCaption>Category.Name</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>AssetViewedDS</DimensionName>
-                      <HierarchyName>EvidenceRelations.1.ValueDisplayName</HierarchyName>
-                      <HierarchyUniqueName>[AssetViewedDS].[EvidenceRelations.1.ValueDisplayName]</HierarchyUniqueName>
-                      <LevelName>EvidenceRelations.1.ValueDisplayName</LevelName>
-                      <UniqueName>[AssetViewedDS].[EvidenceRelations.1.ValueDisplayName].[EvidenceRelations.1.ValueDisplayName]</UniqueName>
-                    </ID>
-                    <ItemCaption>EvidenceRelations.1.ValueDisplayName</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>AssetViewedDS</DimensionName>
-                      <HierarchyName>AssetViewReason.ViewReason</HierarchyName>
-                      <HierarchyUniqueName>[AssetViewedDS].[AssetViewReason.ViewReason]</HierarchyUniqueName>
-                      <LevelName>AssetViewReason.ViewReason</LevelName>
-                      <UniqueName>[AssetViewedDS].[AssetViewReason.ViewReason].[AssetViewReason.ViewReason]</UniqueName>
-                    </ID>
-                    <ItemCaption>AssetViewReason.ViewReason</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>AssetViewedDS</DimensionName>
-                      <HierarchyName>AssetViewReason.ViewDateTime</HierarchyName>
-                      <HierarchyUniqueName>[AssetViewedDS].[AssetViewReason.ViewDateTime]</HierarchyUniqueName>
-                      <LevelName>AssetViewReason.ViewDateTime</LevelName>
-                      <UniqueName>[AssetViewedDS].[AssetViewReason.ViewDateTime].[AssetViewReason.ViewDateTime]</UniqueName>
-                    </ID>
-                    <ItemCaption>AssetViewReason.ViewDateTime</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>AssetViewedDS</DimensionName>
-                      <HierarchyName>AssetViewReason.SourceIPAddress</HierarchyName>
-                      <HierarchyUniqueName>[AssetViewedDS].[AssetViewReason.SourceIPAddress]</HierarchyUniqueName>
-                      <LevelName>AssetViewReason.SourceIPAddress</LevelName>
-                      <UniqueName>[AssetViewedDS].[AssetViewReason.SourceIPAddress].[AssetViewReason.SourceIPAddress]</UniqueName>
-                    </ID>
-                    <ItemCaption>AssetViewReason.SourceIPAddress</ItemCaption>
+                    <ItemCaption>CaseID</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
                 </Items>
@@ -213,16 +103,6 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
               <From>Model</From>
               <Filter>
                 <FilterItems>
-                  <FilterItem>
-                    <HierarchyUniqueName>[AssetViewedDS].[AssetViewReason.ViewDateTime]</HierarchyUniqueName>
-                    <Condition xsi:type="Range">
-                      <Basis>Member</Basis>
-                      <From />
-                      <FromParametrized>true</FromParametrized>
-                      <To />
-                      <ToParametrized>true</ToParametrized>
-                    </Condition>
-                  </FilterItem>
                   <FilterItem>
                     <HierarchyUniqueName>[AssetViewedDS].[Name]</HierarchyUniqueName>
                     <Condition xsi:type="Contains">
@@ -240,57 +120,10 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement>DEFINE VAR vFromAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@FromAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @FromAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vFromAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-VAR vToAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@ToAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@ToAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @ToAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vToAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@ToAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-VAR vAssetViewedDSName1 = IF(PATHLENGTH(@AssetViewedDSName) = 1, IF(@AssetViewedDSName &lt;&gt; "", @AssetViewedDSName, BLANK()), IF(PATHITEM(@AssetViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetViewedDSName, 2), BLANK()))
+              <Statement>DEFINE VAR vAssetViewedDSName1 = IF(PATHLENGTH(@AssetViewedDSName) = 1, IF(@AssetViewedDSName &lt;&gt; "", @AssetViewedDSName, BLANK()), IF(PATHITEM(@AssetViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetViewedDSName, 2), BLANK()))
 VAR vAssetViewedDSName1ALL = PATHLENGTH(@AssetViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetViewedDSName, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'AssetViewedDS'[User.UserInfo.FName], 'AssetViewedDS'[User.UserInfo.LName], 'AssetViewedDS'[Category.Name], 'AssetViewedDS'[EvidenceRelations.1.ValueDisplayName], 'AssetViewedDS'[AssetViewReason.ViewReason], 'AssetViewedDS'[AssetViewReason.ViewDateTime], 'AssetViewedDS'[AssetViewReason.SourceIPAddress], FILTER(VALUES('AssetViewedDS'[AssetViewReason.ViewDateTime]), (vFromAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &gt;= DATEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1)) &amp;&amp; (vToAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &lt;= DATEVALUE(vToAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vToAssetViewedDSAssetViewReasonViewDateTime1))), FILTER(VALUES('AssetViewedDS'[Name]), (vAssetViewedDSName1ALL || IF(vAssetViewedDSName1 &lt;&gt; "", SEARCH(vAssetViewedDSName1, 'AssetViewedDS'[Name], 1, 0) &gt; 0, TRUE))))</Statement>
+EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'AssetViewedDS'[Users], 'AssetViewedDS'[Category], 'AssetViewedDS'[CaseID], FILTER(VALUES('AssetViewedDS'[Name]), (vAssetViewedDSName1ALL || IF(vAssetViewedDSName1 &lt;&gt; "", SEARCH(vAssetViewedDSName1, 'AssetViewedDS'[Name], 1, 0) &gt; 0, TRUE))))</Statement>
               <ParameterDefinitions>
-                <ParameterDefinition>
-                  <Name>FromAssetViewedDSAssetViewReasonViewDateTime</Name>
-                  <Usage>RangeFrom</Usage>
-                  <DbType>DateTime</DbType>
-                  <DefaultValues>
-                    <DefaultValue />
-                  </DefaultValues>
-                  <Caption>From AssetViewReason.ViewDateTime</Caption>
-                  <HierarchyUniqueName>[AssetViewedDS].[AssetViewReason.ViewDateTime]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[AssetViewReason.ViewDateTime], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[AssetViewReason.ViewDateTime], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[AssetViewReason.ViewDateTime], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[AssetViewReason.ViewDateTime]", 'AssetViewedDS'[AssetViewReason.ViewDateTime]) order by 'AssetViewedDS'[AssetViewReason.ViewDateTime], [ParameterLevel]</Statement>
-                    <ParameterizedStatement>
-                      <ReferencedParameters />
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <AllowBlank>true</AllowBlank>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>ToAssetViewedDSAssetViewReasonViewDateTime</Name>
-                  <Usage>RangeTo</Usage>
-                  <DbType>DateTime</DbType>
-                  <DefaultValues>
-                    <DefaultValue />
-                  </DefaultValues>
-                  <Caption>To AssetViewReason.ViewDateTime</Caption>
-                  <HierarchyUniqueName>[AssetViewedDS].[AssetViewReason.ViewDateTime]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>DEFINE VAR vFromAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@FromAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @FromAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vFromAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[AssetViewReason.ViewDateTime], "h0"), FILTER(VALUES('AssetViewedDS'[AssetViewReason.ViewDateTime]), (vFromAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &gt;= DATEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[AssetViewReason.ViewDateTime], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[AssetViewReason.ViewDateTime], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[AssetViewReason.ViewDateTime]", 'AssetViewedDS'[AssetViewReason.ViewDateTime]) order by 'AssetViewedDS'[AssetViewReason.ViewDateTime], [ParameterLevel]</Statement>
-                    <ParameterizedStatement>
-                      <Statement>DEFINE VAR vFromAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@FromAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @FromAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vFromAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[AssetViewReason.ViewDateTime], "h0"), FILTER(VALUES('AssetViewedDS'[AssetViewReason.ViewDateTime]), (vFromAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &gt;= DATEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[AssetViewReason.ViewDateTime], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[AssetViewReason.ViewDateTime], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[AssetViewReason.ViewDateTime]", 'AssetViewedDS'[AssetViewReason.ViewDateTime]) order by 'AssetViewedDS'[AssetViewReason.ViewDateTime], [ParameterLevel]</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>FromAssetViewedDSAssetViewReasonViewDateTime</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <AllowBlank>true</AllowBlank>
-                </ParameterDefinition>
                 <ParameterDefinition>
                   <Name>AssetViewedDSName</Name>
                   <Usage>Contains</Usage>
@@ -299,25 +132,9 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                   </DefaultValues>
                   <Caption>Name</Caption>
                   <ParameterValuesQuery>
-                    <Statement>DEFINE VAR vFromAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@FromAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @FromAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vFromAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-VAR vToAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@ToAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@ToAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @ToAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vToAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@ToAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[Name], "h0"), FILTER(VALUES('AssetViewedDS'[AssetViewReason.ViewDateTime]), (vFromAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &gt;= DATEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1)) &amp;&amp; (vToAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &lt;= DATEVALUE(vToAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vToAssetViewedDSAssetViewReasonViewDateTime1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[Name]", 'AssetViewedDS'[Name]) order by 'AssetViewedDS'[Name], [ParameterLevel]</Statement>
+                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[Name], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[Name]", 'AssetViewedDS'[Name]) order by 'AssetViewedDS'[Name], [ParameterLevel]</Statement>
                     <ParameterizedStatement>
-                      <Statement>DEFINE VAR vFromAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@FromAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @FromAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vFromAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-VAR vToAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@ToAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@ToAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @ToAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vToAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@ToAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[Name], "h0"), FILTER(VALUES('AssetViewedDS'[AssetViewReason.ViewDateTime]), (vFromAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &gt;= DATEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1)) &amp;&amp; (vToAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &lt;= DATEVALUE(vToAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vToAssetViewedDSAssetViewReasonViewDateTime1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[Name]", 'AssetViewedDS'[Name]) order by 'AssetViewedDS'[Name], [ParameterLevel]</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>FromAssetViewedDSAssetViewReasonViewDateTime</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>ToAssetViewedDSAssetViewReasonViewDateTime</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
+                      <ReferencedParameters />
                     </ParameterizedStatement>
                   </ParameterValuesQuery>
                   <AllowBlank>true</AllowBlank>
@@ -326,13 +143,9 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
             </Query>
           </QueryDefinition>
         </rd:DesignerState>
-        <CommandText>DEFINE VAR vFromAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@FromAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @FromAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vFromAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-VAR vToAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@ToAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@ToAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @ToAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vToAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@ToAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-VAR vAssetViewedDSName1 = IF(PATHLENGTH(@AssetViewedDSName) = 1, IF(@AssetViewedDSName &lt;&gt; "", @AssetViewedDSName, BLANK()), IF(PATHITEM(@AssetViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetViewedDSName, 2), BLANK()))
+        <CommandText>DEFINE VAR vAssetViewedDSName1 = IF(PATHLENGTH(@AssetViewedDSName) = 1, IF(@AssetViewedDSName &lt;&gt; "", @AssetViewedDSName, BLANK()), IF(PATHITEM(@AssetViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetViewedDSName, 2), BLANK()))
 VAR vAssetViewedDSName1ALL = PATHLENGTH(@AssetViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetViewedDSName, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'AssetViewedDS'[User.UserInfo.FName], 'AssetViewedDS'[User.UserInfo.LName], 'AssetViewedDS'[Category.Name], 'AssetViewedDS'[EvidenceRelations.1.ValueDisplayName], 'AssetViewedDS'[AssetViewReason.ViewReason], 'AssetViewedDS'[AssetViewReason.ViewDateTime], 'AssetViewedDS'[AssetViewReason.SourceIPAddress], FILTER(VALUES('AssetViewedDS'[AssetViewReason.ViewDateTime]), (vFromAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &gt;= DATEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1)) &amp;&amp; (vToAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &lt;= DATEVALUE(vToAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vToAssetViewedDSAssetViewReasonViewDateTime1))), FILTER(VALUES('AssetViewedDS'[Name]), (vAssetViewedDSName1ALL || IF(vAssetViewedDSName1 &lt;&gt; "", SEARCH(vAssetViewedDSName1, 'AssetViewedDS'[Name], 1, 0) &gt; 0, TRUE))))</CommandText>
+EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'AssetViewedDS'[Users], 'AssetViewedDS'[Category], 'AssetViewedDS'[CaseID], FILTER(VALUES('AssetViewedDS'[Name]), (vAssetViewedDSName1ALL || IF(vAssetViewedDSName1 &lt;&gt; "", SEARCH(vAssetViewedDSName1, 'AssetViewedDS'[Name], 1, 0) &gt; 0, TRUE))))</CommandText>
       </Query>
       <Fields>
         <Field Name="Name">
@@ -343,47 +156,23 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
           <rd:TypeName>System.String</rd:TypeName>
           <DataField>AssetViewedDS[Unit.Name]</DataField>
         </Field>
-        <Field Name="User_UserInfo_FName">
+        <Field Name="Users">
           <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetViewedDS[User.UserInfo.FName]</DataField>
+          <DataField>AssetViewedDS[Users]</DataField>
         </Field>
-        <Field Name="User_UserInfo_LName">
+        <Field Name="Category">
           <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetViewedDS[User.UserInfo.LName]</DataField>
+          <DataField>AssetViewedDS[Category]</DataField>
         </Field>
-        <Field Name="Category_Name">
+        <Field Name="CaseID">
           <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetViewedDS[Category.Name]</DataField>
-        </Field>
-        <Field Name="EvidenceRelations_1_ValueDisplayName">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetViewedDS[EvidenceRelations.1.ValueDisplayName]</DataField>
-        </Field>
-        <Field Name="AssetViewReason_ViewReason">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetViewedDS[AssetViewReason.ViewReason]</DataField>
-        </Field>
-        <Field Name="AssetViewReason_ViewDateTime">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetViewedDS[AssetViewReason.ViewDateTime]</DataField>
-        </Field>
-        <Field Name="AssetViewReason_SourceIPAddress">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetViewedDS[AssetViewReason.SourceIPAddress]</DataField>
+          <DataField>AssetViewedDS[CaseID]</DataField>
         </Field>
       </Fields>
     </DataSet>
     <DataSet Name="AssetViewedDSName">
       <Query>
         <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="FromAssetViewedDSAssetViewReasonViewDateTime">
-            <Value>=Format((Parameters!FromAssetViewedDSAssetViewReasonViewDateTime.Value), "yyyy-MM-dd")</Value>
-          </QueryParameter>
-          <QueryParameter Name="ToAssetViewedDSAssetViewReasonViewDateTime">
-            <Value>=Format((Parameters!ToAssetViewedDSAssetViewReasonViewDateTime.Value), "yyyy-MM-dd")</Value>
-          </QueryParameter>
-        </QueryParameters>
         <rd:DesignerState>
           <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
             <CommandType>DAX</CommandType>
@@ -427,66 +216,14 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
               <QueryProperties />
             </QuerySpecification>
             <Query>
-              <Statement>DEFINE VAR vFromAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@FromAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @FromAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vFromAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-VAR vToAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@ToAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@ToAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @ToAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vToAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@ToAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[Name], "h0"), FILTER(VALUES('AssetViewedDS'[AssetViewReason.ViewDateTime]), (vFromAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &gt;= DATEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1)) &amp;&amp; (vToAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &lt;= DATEVALUE(vToAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vToAssetViewedDSAssetViewReasonViewDateTime1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[Name]", 'AssetViewedDS'[Name]) order by 'AssetViewedDS'[Name], [ParameterLevel]</Statement>
-              <ParameterDefinitions>
-                <ParameterDefinition>
-                  <Name>FromAssetViewedDSAssetViewReasonViewDateTime</Name>
-                  <Usage>RangeFrom</Usage>
-                  <DbType>DateTime</DbType>
-                  <DefaultValues>
-                    <DefaultValue />
-                  </DefaultValues>
-                  <Caption>From AssetViewReason.ViewDateTime</Caption>
-                  <HierarchyUniqueName>[AssetViewedDS].[AssetViewReason.ViewDateTime]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[AssetViewReason.ViewDateTime], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[AssetViewReason.ViewDateTime], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[AssetViewReason.ViewDateTime], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[AssetViewReason.ViewDateTime]", 'AssetViewedDS'[AssetViewReason.ViewDateTime]) order by 'AssetViewedDS'[AssetViewReason.ViewDateTime], [ParameterLevel]</Statement>
-                    <ParameterizedStatement>
-                      <ReferencedParameters />
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <AllowBlank>true</AllowBlank>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>ToAssetViewedDSAssetViewReasonViewDateTime</Name>
-                  <Usage>RangeTo</Usage>
-                  <DbType>DateTime</DbType>
-                  <DefaultValues>
-                    <DefaultValue />
-                  </DefaultValues>
-                  <Caption>To AssetViewReason.ViewDateTime</Caption>
-                  <HierarchyUniqueName>[AssetViewedDS].[AssetViewReason.ViewDateTime]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>DEFINE VAR vFromAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@FromAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @FromAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vFromAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[AssetViewReason.ViewDateTime], "h0"), FILTER(VALUES('AssetViewedDS'[AssetViewReason.ViewDateTime]), (vFromAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &gt;= DATEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[AssetViewReason.ViewDateTime], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[AssetViewReason.ViewDateTime], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[AssetViewReason.ViewDateTime]", 'AssetViewedDS'[AssetViewReason.ViewDateTime]) order by 'AssetViewedDS'[AssetViewReason.ViewDateTime], [ParameterLevel]</Statement>
-                    <ParameterizedStatement>
-                      <Statement>DEFINE VAR vFromAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@FromAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @FromAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vFromAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[AssetViewReason.ViewDateTime], "h0"), FILTER(VALUES('AssetViewedDS'[AssetViewReason.ViewDateTime]), (vFromAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &gt;= DATEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[AssetViewReason.ViewDateTime], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[AssetViewReason.ViewDateTime], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[AssetViewReason.ViewDateTime]", 'AssetViewedDS'[AssetViewReason.ViewDateTime]) order by 'AssetViewedDS'[AssetViewReason.ViewDateTime], [ParameterLevel]</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>FromAssetViewedDSAssetViewReasonViewDateTime</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <AllowBlank>true</AllowBlank>
-                </ParameterDefinition>
-              </ParameterDefinitions>
+              <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[Name], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[Name]", 'AssetViewedDS'[Name]) order by 'AssetViewedDS'[Name], [ParameterLevel]</Statement>
+              <ParameterDefinitions />
             </Query>
           </QueryDefinition>
         </rd:DesignerState>
         <rd:AutoGenerated>true</rd:AutoGenerated>
         <rd:Hidden>true</rd:Hidden>
-        <CommandText>DEFINE VAR vFromAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@FromAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @FromAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vFromAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@FromAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@FromAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-VAR vToAssetViewedDSAssetViewReasonViewDateTime1 = IF(PATHLENGTH(@ToAssetViewedDSAssetViewReasonViewDateTime) = 1, IF(@ToAssetViewedDSAssetViewReasonViewDateTime &lt;&gt; "", @ToAssetViewedDSAssetViewReasonViewDateTime, BLANK()), IF(PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 2) &lt;&gt; "", PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 2), BLANK()))
-VAR vToAssetViewedDSAssetViewReasonViewDateTime1ALL = PATHLENGTH(@ToAssetViewedDSAssetViewReasonViewDateTime) &gt; 1 &amp;&amp; PATHITEM(@ToAssetViewedDSAssetViewReasonViewDateTime, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[Name], "h0"), FILTER(VALUES('AssetViewedDS'[AssetViewReason.ViewDateTime]), (vFromAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &gt;= DATEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vFromAssetViewedDSAssetViewReasonViewDateTime1)) &amp;&amp; (vToAssetViewedDSAssetViewReasonViewDateTime1ALL || 'AssetViewedDS'[AssetViewReason.ViewDateTime] &lt;= DATEVALUE(vToAssetViewedDSAssetViewReasonViewDateTime1) + TIMEVALUE(vToAssetViewedDSAssetViewReasonViewDateTime1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[Name]", 'AssetViewedDS'[Name]) order by 'AssetViewedDS'[Name], [ParameterLevel]</CommandText>
+        <CommandText>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetViewedDS'[Name], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetViewedDS'[Name]", 'AssetViewedDS'[Name]) order by 'AssetViewedDS'[Name], [ParameterLevel]</CommandText>
       </Query>
       <Fields>
         <Field Name="ParameterCaption">
@@ -512,55 +249,55 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
     <ReportSection>
       <Body>
         <ReportItems>
-          <Tablix Name="Tablix1">
+          <Tablix Name="Tablix3">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>50.16501mm</Width>
+                  <Width>63.52333mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>33.255mm</Width>
+                  <Width>63.52333mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>36.21833mm</Width>
+                  <Width>63.52333mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>40.87502mm</Width>
+                  <Width>63.52333mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>82.0089mm</Width>
+                  <Width>63.52333mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>65.92219mm</Width>
+                  <Width>49.55332mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>40.66332mm</Width>
+                  <Width>41.93333mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>38.335mm</Width>
+                  <Width>45.74335mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>50.6822mm</Width>
+                  <Width>47.1783mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>49.97783mm</Width>
+                  <Width>36.00665mm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>15.38111mm</Height>
+                  <Height>12.94833mm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox2">
-                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                        <Textbox Name="Textbox31">
+                          <rd:DefaultName>Textbox31</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Asset Name</Value>
+                                  <Value>Name</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontSize>14pt</FontSize>
@@ -598,7 +335,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                               <Style>Solid</Style>
                               <Width>1pt</Width>
                             </RightBorder>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Silver</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -610,15 +347,15 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox3">
-                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                        <Textbox Name="Textbox32">
+                          <rd:DefaultName>Textbox32</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Unit</Value>
+                                  <Value>Unit Name</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontSize>14pt</FontSize>
@@ -656,7 +393,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                               <Style>Solid</Style>
                               <Width>1pt</Width>
                             </RightBorder>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Silver</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -668,15 +405,15 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox5">
-                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                        <Textbox Name="Textbox34">
+                          <rd:DefaultName>Textbox34</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>User</Value>
+                                  <Value>Users</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontSize>14pt</FontSize>
@@ -714,7 +451,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                               <Style>Solid</Style>
                               <Width>1pt</Width>
                             </RightBorder>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Silver</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -726,8 +463,8 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox9">
-                          <rd:DefaultName>Textbox9</rd:DefaultName>
+                        <Textbox Name="Textbox36">
+                          <rd:DefaultName>Textbox36</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -772,7 +509,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                               <Style>Solid</Style>
                               <Width>1pt</Width>
                             </RightBorder>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Silver</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -784,8 +521,8 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox6">
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
+                        <Textbox Name="Textbox38">
+                          <rd:DefaultName>Textbox38</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -830,7 +567,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                               <Style>Solid</Style>
                               <Width>1pt</Width>
                             </RightBorder>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Silver</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -842,8 +579,8 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox11">
-                          <rd:DefaultName>Textbox11</rd:DefaultName>
+                        <Textbox Name="Textbox40">
+                          <rd:DefaultName>Textbox40</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -888,7 +625,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                               <Style>Solid</Style>
                               <Width>1pt</Width>
                             </RightBorder>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Silver</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -900,15 +637,15 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox13">
-                          <rd:DefaultName>Textbox13</rd:DefaultName>
+                        <Textbox Name="Textbox42">
+                          <rd:DefaultName>Textbox42</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Viewed On Date </Value>
+                                  <Value>Viewed On Date</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontSize>14pt</FontSize>
@@ -946,7 +683,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                               <Style>Solid</Style>
                               <Width>1pt</Width>
                             </RightBorder>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Silver</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -958,8 +695,8 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox8">
-                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                        <Textbox Name="Textbox44">
+                          <rd:DefaultName>Textbox44</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1004,7 +741,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                               <Style>Solid</Style>
                               <Width>1pt</Width>
                             </RightBorder>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Silver</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1016,15 +753,15 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox1">
-                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                        <Textbox Name="Textbox46">
+                          <rd:DefaultName>Textbox46</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Viewer User Group</Value>
+                                  <Value>Viewed User Group</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontSize>14pt</FontSize>
@@ -1062,7 +799,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                               <Style>Solid</Style>
                               <Width>1pt</Width>
                             </RightBorder>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Silver</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1074,15 +811,15 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox15">
-                          <rd:DefaultName>Textbox15</rd:DefaultName>
+                        <Textbox Name="Textbox48">
+                          <rd:DefaultName>Textbox48</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value> IP Address</Value>
+                                  <Value>Ip Address</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontSize>14pt</FontSize>
@@ -1120,7 +857,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                               <Style>Solid</Style>
                               <Width>1pt</Width>
                             </RightBorder>
-                            <BackgroundColor>LightGrey</BackgroundColor>
+                            <BackgroundColor>Silver</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1133,7 +870,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>10.86833mm</Height>
+                  <Height>12.94833mm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1149,7 +886,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1207,7 +944,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1253,19 +990,19 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="User_UserInfo_FName">
-                          <rd:DefaultName>User_UserInfo_FName</rd:DefaultName>
+                        <Textbox Name="Users">
+                          <rd:DefaultName>Users</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!User_UserInfo_FName.Value &amp; " " &amp; Fields!User_UserInfo_LName.Value</Value>
+                                  <Value>=Fields!Users.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1311,19 +1048,19 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Category_Name">
-                          <rd:DefaultName>Category_Name</rd:DefaultName>
+                        <Textbox Name="Category">
+                          <rd:DefaultName>Category</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Category_Name.Value</Value>
+                                  <Value>=Fields!Category.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1369,19 +1106,19 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="EvidenceRelations_1_ValueDisplayName">
-                          <rd:DefaultName>EvidenceRelations_1_ValueDisplayName</rd:DefaultName>
+                        <Textbox Name="CaseID">
+                          <rd:DefaultName>CaseID</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!EvidenceRelations_1_ValueDisplayName.Value</Value>
+                                  <Value>=Fields!CaseID.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1427,124 +1164,8 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="AssetViewReason_ViewReason">
-                          <rd:DefaultName>AssetViewReason_ViewReason</rd:DefaultName>
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!AssetViewReason_ViewReason.Value</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
-                                    <Color>#333333</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <Style>
-                            <Border>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <BackgroundColor>White</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="AssetViewReason_ViewDateTime">
-                          <rd:DefaultName>AssetViewReason_ViewDateTime</rd:DefaultName>
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!AssetViewReason_ViewDateTime.Value</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
-                                    <Color>#333333</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <Style>
-                            <Border>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <BackgroundColor>White</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox10">
-                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                        <Textbox Name="Textbox41">
+                          <rd:DefaultName>Textbox41</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1555,7 +1176,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1601,8 +1222,8 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox4">
-                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                        <Textbox Name="Textbox43">
+                          <rd:DefaultName>Textbox43</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1613,7 +1234,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1659,19 +1280,135 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="AssetViewReason_SourceIPAddress">
-                          <rd:DefaultName>AssetViewReason_SourceIPAddress</rd:DefaultName>
+                        <Textbox Name="Textbox45">
+                          <rd:DefaultName>Textbox45</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AssetViewReason_SourceIPAddress.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox47">
+                          <rd:DefaultName>Textbox47</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox49">
+                          <rd:DefaultName>Textbox49</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                     <Color>#333333</Color>
                                   </Style>
                                 </TextRun>
@@ -1748,8 +1485,8 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
             <DataSetName>AssetViewedDs</DataSetName>
             <Top>0mm</Top>
             <Left>0mm</Left>
-            <Height>26.24944mm</Height>
-            <Width>488.1028mm</Width>
+            <Height>25.89666mm</Height>
+            <Width>538.03162mm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1764,7 +1501,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
           </Border>
         </Style>
       </Body>
-      <Width>488.92497mm</Width>
+      <Width>538.03162mm</Width>
       <Page>
         <PageHeader>
           <Height>15.875mm</Height>
@@ -1809,7 +1546,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>16.22777mm</Height>
+          <Height>17.07444mm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1859,8 +1596,8 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0mm</Top>
-              <Left>438.12497mm</Left>
+              <Top>1.41111mm</Top>
+              <Left>487.23162mm</Left>
               <Height>15.66333mm</Height>
               <Width>50.8mm</Width>
               <ZIndex>1</ZIndex>
@@ -1894,32 +1631,6 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="FromAssetViewedDSAssetViewReasonViewDateTime">
-      <DataType>DateTime</DataType>
-      <DefaultValue>
-        <DataSetReference>
-          <DataSetName>MinMaxDateDs</DataSetName>
-          <ValueField>MinDate</ValueField>
-        </DataSetReference>
-      </DefaultValue>
-      <Prompt>From Asset View</Prompt>
-      <cl:ComponentMetadata>
-        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
-      </cl:ComponentMetadata>
-    </ReportParameter>
-    <ReportParameter Name="ToAssetViewedDSAssetViewReasonViewDateTime">
-      <DataType>DateTime</DataType>
-      <DefaultValue>
-        <DataSetReference>
-          <DataSetName>MinMaxDateDs</DataSetName>
-          <ValueField>MaxDate</ValueField>
-        </DataSetReference>
-      </DefaultValue>
-      <Prompt>To Asset View</Prompt>
-      <cl:ComponentMetadata>
-        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
-      </cl:ComponentMetadata>
-    </ReportParameter>
     <ReportParameter Name="AssetViewedDSName">
       <DataType>String</DataType>
       <DefaultValue>
@@ -1942,16 +1653,6 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>FromAssetViewedDSAssetViewReasonViewDateTime</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>ToAssetViewedDSAssetViewReasonViewDateTime</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
           <ParameterName>AssetViewedDSName</ParameterName>
         </CellDefinition>
       </CellDefinitions>

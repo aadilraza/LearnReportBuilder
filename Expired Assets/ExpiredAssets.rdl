@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1811.11</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-09-16T15:30:42.1875175Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-09-20T16:57:20.8990750Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -32,8 +32,8 @@
       <Query>
         <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
         <QueryParameters>
-          <QueryParameter Name="ExpiredAssetDSName">
-            <Value>=Parameters!ExpiredAssetDSName.Value</Value>
+          <QueryParameter Name="ExpiredAssetDSUsers">
+            <Value>=Parameters!ExpiredAssetDSUsers.Value</Value>
           </QueryParameter>
         </QueryParameters>
         <rd:DesignerState>
@@ -45,67 +45,12 @@
                   <Item>
                     <ID xsi:type="Level">
                       <DimensionName>ExpiredAssetDS</DimensionName>
-                      <HierarchyName>AssetAV.RecordingStarted</HierarchyName>
-                      <HierarchyUniqueName>[ExpiredAssetDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
-                      <LevelName>AssetAV.RecordingStarted</LevelName>
-                      <UniqueName>[ExpiredAssetDS].[AssetAV.RecordingStarted].[AssetAV.RecordingStarted]</UniqueName>
+                      <HierarchyName>Name</HierarchyName>
+                      <HierarchyUniqueName>[ExpiredAssetDS].[Name]</HierarchyUniqueName>
+                      <LevelName>Name</LevelName>
+                      <UniqueName>[ExpiredAssetDS].[Name].[Name]</UniqueName>
                     </ID>
-                    <ItemCaption>AssetAV.RecordingStarted</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>ExpiredAssetDS</DimensionName>
-                      <HierarchyName>User.UserInfo.FName</HierarchyName>
-                      <HierarchyUniqueName>[ExpiredAssetDS].[User.UserInfo.FName]</HierarchyUniqueName>
-                      <LevelName>User.UserInfo.FName</LevelName>
-                      <UniqueName>[ExpiredAssetDS].[User.UserInfo.FName].[User.UserInfo.FName]</UniqueName>
-                    </ID>
-                    <ItemCaption>User.UserInfo.FName</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>ExpiredAssetDS</DimensionName>
-                      <HierarchyName>User.UserInfo.LName</HierarchyName>
-                      <HierarchyUniqueName>[ExpiredAssetDS].[User.UserInfo.LName]</HierarchyUniqueName>
-                      <LevelName>User.UserInfo.LName</LevelName>
-                      <UniqueName>[ExpiredAssetDS].[User.UserInfo.LName].[User.UserInfo.LName]</UniqueName>
-                    </ID>
-                    <ItemCaption>User.UserInfo.LName</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>ExpiredAssetDS</DimensionName>
-                      <HierarchyName>Category.Name</HierarchyName>
-                      <HierarchyUniqueName>[ExpiredAssetDS].[Category.Name]</HierarchyUniqueName>
-                      <LevelName>Category.Name</LevelName>
-                      <UniqueName>[ExpiredAssetDS].[Category.Name].[Category.Name]</UniqueName>
-                    </ID>
-                    <ItemCaption>Category.Name</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>ExpiredAssetDS</DimensionName>
-                      <HierarchyName>Evidence.ExpireOn</HierarchyName>
-                      <HierarchyUniqueName>[ExpiredAssetDS].[Evidence.ExpireOn]</HierarchyUniqueName>
-                      <LevelName>Evidence.ExpireOn</LevelName>
-                      <UniqueName>[ExpiredAssetDS].[Evidence.ExpireOn].[Evidence.ExpireOn]</UniqueName>
-                    </ID>
-                    <ItemCaption>Evidence.ExpireOn</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>ExpiredAssetDS</DimensionName>
-                      <HierarchyName>Evidence.HoldUntil</HierarchyName>
-                      <HierarchyUniqueName>[ExpiredAssetDS].[Evidence.HoldUntil]</HierarchyUniqueName>
-                      <LevelName>Evidence.HoldUntil</LevelName>
-                      <UniqueName>[ExpiredAssetDS].[Evidence.HoldUntil].[Evidence.HoldUntil]</UniqueName>
-                    </ID>
-                    <ItemCaption>Evidence.HoldUntil</ItemCaption>
+                    <ItemCaption>Name</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
                   <Item>
@@ -122,12 +67,34 @@
                   <Item>
                     <ID xsi:type="Level">
                       <DimensionName>ExpiredAssetDS</DimensionName>
-                      <HierarchyName>Name</HierarchyName>
-                      <HierarchyUniqueName>[ExpiredAssetDS].[Name]</HierarchyUniqueName>
-                      <LevelName>Name</LevelName>
-                      <UniqueName>[ExpiredAssetDS].[Name].[Name]</UniqueName>
+                      <HierarchyName>CapturedOn</HierarchyName>
+                      <HierarchyUniqueName>[ExpiredAssetDS].[CapturedOn]</HierarchyUniqueName>
+                      <LevelName>CapturedOn</LevelName>
+                      <UniqueName>[ExpiredAssetDS].[CapturedOn].[CapturedOn]</UniqueName>
                     </ID>
-                    <ItemCaption>Name</ItemCaption>
+                    <ItemCaption>CapturedOn</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>ExpiredAssetDS</DimensionName>
+                      <HierarchyName>Users</HierarchyName>
+                      <HierarchyUniqueName>[ExpiredAssetDS].[Users]</HierarchyUniqueName>
+                      <LevelName>Users</LevelName>
+                      <UniqueName>[ExpiredAssetDS].[Users].[Users]</UniqueName>
+                    </ID>
+                    <ItemCaption>Users</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>ExpiredAssetDS</DimensionName>
+                      <HierarchyName>Categories</HierarchyName>
+                      <HierarchyUniqueName>[ExpiredAssetDS].[Categories]</HierarchyUniqueName>
+                      <LevelName>Categories</LevelName>
+                      <UniqueName>[ExpiredAssetDS].[Categories].[Categories]</UniqueName>
+                    </ID>
+                    <ItemCaption>Categories</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
                 </Items>
@@ -137,7 +104,7 @@
               <Filter>
                 <FilterItems>
                   <FilterItem>
-                    <HierarchyUniqueName>[ExpiredAssetDS].[Name]</HierarchyUniqueName>
+                    <HierarchyUniqueName>[ExpiredAssetDS].[Users]</HierarchyUniqueName>
                     <Condition xsi:type="Contains">
                       <Basis>Caption</Basis>
                       <Expression />
@@ -153,19 +120,19 @@
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement>DEFINE VAR vExpiredAssetDSName1 = IF(PATHLENGTH(@ExpiredAssetDSName) = 1, IF(@ExpiredAssetDSName &lt;&gt; "", @ExpiredAssetDSName, BLANK()), IF(PATHITEM(@ExpiredAssetDSName, 2) &lt;&gt; "", PATHITEM(@ExpiredAssetDSName, 2), BLANK()))
-VAR vExpiredAssetDSName1ALL = PATHLENGTH(@ExpiredAssetDSName) &gt; 1 &amp;&amp; PATHITEM(@ExpiredAssetDSName, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[AssetAV.RecordingStarted], 'ExpiredAssetDS'[User.UserInfo.FName], 'ExpiredAssetDS'[User.UserInfo.LName], 'ExpiredAssetDS'[Category.Name], 'ExpiredAssetDS'[Evidence.ExpireOn], 'ExpiredAssetDS'[Evidence.HoldUntil], 'ExpiredAssetDS'[Unit.Name], 'ExpiredAssetDS'[Name], FILTER(VALUES('ExpiredAssetDS'[Name]), (vExpiredAssetDSName1ALL || IF(vExpiredAssetDSName1 &lt;&gt; "", SEARCH(vExpiredAssetDSName1, 'ExpiredAssetDS'[Name], 1, 0) &gt; 0, TRUE))))</Statement>
+              <Statement>DEFINE VAR vExpiredAssetDSUsers1 = IF(PATHLENGTH(@ExpiredAssetDSUsers) = 1, IF(@ExpiredAssetDSUsers &lt;&gt; "", @ExpiredAssetDSUsers, BLANK()), IF(PATHITEM(@ExpiredAssetDSUsers, 2) &lt;&gt; "", PATHITEM(@ExpiredAssetDSUsers, 2), BLANK()))
+VAR vExpiredAssetDSUsers1ALL = PATHLENGTH(@ExpiredAssetDSUsers) &gt; 1 &amp;&amp; PATHITEM(@ExpiredAssetDSUsers, 1, 1) &lt; 1
+EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[Name], 'ExpiredAssetDS'[Unit.Name], 'ExpiredAssetDS'[CapturedOn], 'ExpiredAssetDS'[Users], 'ExpiredAssetDS'[Categories], FILTER(VALUES('ExpiredAssetDS'[Users]), (vExpiredAssetDSUsers1ALL || IF(vExpiredAssetDSUsers1 &lt;&gt; "", SEARCH(vExpiredAssetDSUsers1, 'ExpiredAssetDS'[Users], 1, 0) &gt; 0, TRUE))))</Statement>
               <ParameterDefinitions>
                 <ParameterDefinition>
-                  <Name>ExpiredAssetDSName</Name>
+                  <Name>ExpiredAssetDSUsers</Name>
                   <Usage>Contains</Usage>
                   <DefaultValues>
                     <DefaultValue />
                   </DefaultValues>
-                  <Caption>Name</Caption>
+                  <Caption>Users</Caption>
                   <ParameterValuesQuery>
-                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('ExpiredAssetDS'[Name], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'ExpiredAssetDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'ExpiredAssetDS'[Name], "ParameterLevel", [ParameterLevel], "'ExpiredAssetDS'[Name]", 'ExpiredAssetDS'[Name]) order by 'ExpiredAssetDS'[Name], [ParameterLevel]</Statement>
+                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('ExpiredAssetDS'[Users], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'ExpiredAssetDS'[Users], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'ExpiredAssetDS'[Users], "ParameterLevel", [ParameterLevel], "'ExpiredAssetDS'[Users]", 'ExpiredAssetDS'[Users]) order by 'ExpiredAssetDS'[Users], [ParameterLevel]</Statement>
                     <ParameterizedStatement>
                       <ReferencedParameters />
                     </ParameterizedStatement>
@@ -176,34 +143,22 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[AssetAV.RecordingStarted], 'ExpiredAs
             </Query>
           </QueryDefinition>
         </rd:DesignerState>
-        <CommandText>DEFINE VAR vExpiredAssetDSName1 = IF(PATHLENGTH(@ExpiredAssetDSName) = 1, IF(@ExpiredAssetDSName &lt;&gt; "", @ExpiredAssetDSName, BLANK()), IF(PATHITEM(@ExpiredAssetDSName, 2) &lt;&gt; "", PATHITEM(@ExpiredAssetDSName, 2), BLANK()))
-VAR vExpiredAssetDSName1ALL = PATHLENGTH(@ExpiredAssetDSName) &gt; 1 &amp;&amp; PATHITEM(@ExpiredAssetDSName, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[AssetAV.RecordingStarted], 'ExpiredAssetDS'[User.UserInfo.FName], 'ExpiredAssetDS'[User.UserInfo.LName], 'ExpiredAssetDS'[Category.Name], 'ExpiredAssetDS'[Evidence.ExpireOn], 'ExpiredAssetDS'[Evidence.HoldUntil], 'ExpiredAssetDS'[Unit.Name], 'ExpiredAssetDS'[Name], FILTER(VALUES('ExpiredAssetDS'[Name]), (vExpiredAssetDSName1ALL || IF(vExpiredAssetDSName1 &lt;&gt; "", SEARCH(vExpiredAssetDSName1, 'ExpiredAssetDS'[Name], 1, 0) &gt; 0, TRUE))))</CommandText>
+        <CommandText>DEFINE VAR vExpiredAssetDSUsers1 = IF(PATHLENGTH(@ExpiredAssetDSUsers) = 1, IF(@ExpiredAssetDSUsers &lt;&gt; "", @ExpiredAssetDSUsers, BLANK()), IF(PATHITEM(@ExpiredAssetDSUsers, 2) &lt;&gt; "", PATHITEM(@ExpiredAssetDSUsers, 2), BLANK()))
+VAR vExpiredAssetDSUsers1ALL = PATHLENGTH(@ExpiredAssetDSUsers) &gt; 1 &amp;&amp; PATHITEM(@ExpiredAssetDSUsers, 1, 1) &lt; 1
+EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[Name], 'ExpiredAssetDS'[Unit.Name], 'ExpiredAssetDS'[CapturedOn], 'ExpiredAssetDS'[Users], 'ExpiredAssetDS'[Categories], FILTER(VALUES('ExpiredAssetDS'[Users]), (vExpiredAssetDSUsers1ALL || IF(vExpiredAssetDSUsers1 &lt;&gt; "", SEARCH(vExpiredAssetDSUsers1, 'ExpiredAssetDS'[Users], 1, 0) &gt; 0, TRUE))))</CommandText>
       </Query>
       <Fields>
-        <Field Name="AssetAV_RecordingStarted">
+        <Field Name="CapturedOn">
           <rd:TypeName>System.String</rd:TypeName>
-          <DataField>ExpiredAssetDS[AssetAV.RecordingStarted]</DataField>
+          <DataField>ExpiredAssetDS[CapturedOn]</DataField>
         </Field>
-        <Field Name="User_UserInfo_FName">
+        <Field Name="Users">
           <rd:TypeName>System.String</rd:TypeName>
-          <DataField>ExpiredAssetDS[User.UserInfo.FName]</DataField>
+          <DataField>ExpiredAssetDS[Users]</DataField>
         </Field>
-        <Field Name="User_UserInfo_LName">
+        <Field Name="Categories">
           <rd:TypeName>System.String</rd:TypeName>
-          <DataField>ExpiredAssetDS[User.UserInfo.LName]</DataField>
-        </Field>
-        <Field Name="Category_Name">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>ExpiredAssetDS[Category.Name]</DataField>
-        </Field>
-        <Field Name="Evidence_ExpireOn">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>ExpiredAssetDS[Evidence.ExpireOn]</DataField>
-        </Field>
-        <Field Name="Evidence_HoldUntil">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>ExpiredAssetDS[Evidence.HoldUntil]</DataField>
+          <DataField>ExpiredAssetDS[Categories]</DataField>
         </Field>
         <Field Name="Unit_Name">
           <rd:TypeName>System.String</rd:TypeName>
@@ -269,6 +224,80 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[AssetAV.RecordingStarted], 'ExpiredAs
         <rd:AutoGenerated>true</rd:AutoGenerated>
         <rd:Hidden>true</rd:Hidden>
         <CommandText>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('ExpiredAssetDS'[Name], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'ExpiredAssetDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'ExpiredAssetDS'[Name], "ParameterLevel", [ParameterLevel], "'ExpiredAssetDS'[Name]", 'ExpiredAssetDS'[Name]) order by 'ExpiredAssetDS'[Name], [ParameterLevel]</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ParameterCaption">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>[ParameterCaption]</DataField>
+        </Field>
+        <Field Name="ParameterValue">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>[ParameterValue]</DataField>
+        </Field>
+        <Field Name="ParameterLevel">
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <DataField>[ParameterLevel]</DataField>
+        </Field>
+        <Field Name="ParameterCaptionIndented">
+          <rd:TypeName>System.String</rd:TypeName>
+          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="ExpiredAssetDSUsers">
+      <Query>
+        <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>DAX</CommandType>
+            <Type>Query</Type>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterCaption</MeasureName>
+                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterCaption</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterValue</MeasureName>
+                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterValue</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Measure">
+                      <MeasureName>ParameterLevel</MeasureName>
+                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
+                    </ID>
+                    <ItemCaption>ParameterLevel</ItemCaption>
+                    <FormattedValue>true</FormattedValue>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>Model</From>
+              <Filter>
+                <FilterItems />
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties />
+            </QuerySpecification>
+            <Query>
+              <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('ExpiredAssetDS'[Users], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'ExpiredAssetDS'[Users], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'ExpiredAssetDS'[Users], "ParameterLevel", [ParameterLevel], "'ExpiredAssetDS'[Users]", 'ExpiredAssetDS'[Users]) order by 'ExpiredAssetDS'[Users], [ParameterLevel]</Statement>
+              <ParameterDefinitions />
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+        <rd:AutoGenerated>true</rd:AutoGenerated>
+        <rd:Hidden>true</rd:Hidden>
+        <CommandText>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('ExpiredAssetDS'[Users], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'ExpiredAssetDS'[Users], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'ExpiredAssetDS'[Users], "ParameterLevel", [ParameterLevel], "'ExpiredAssetDS'[Users]", 'ExpiredAssetDS'[Users]) order by 'ExpiredAssetDS'[Users], [ParameterLevel]</CommandText>
       </Query>
       <Fields>
         <Field Name="ParameterCaption">
@@ -852,15 +881,15 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[AssetAV.RecordingStarted], 'ExpiredAs
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="User_UserInfo_FName">
-                          <rd:DefaultName>User_UserInfo_FName</rd:DefaultName>
+                        <Textbox Name="Users">
+                          <rd:DefaultName>Users</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!User_UserInfo_FName.Value &amp; " " &amp; Fields!User_UserInfo_LName.Value</Value>
+                                  <Value>=Fields!Users.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -910,15 +939,15 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[AssetAV.RecordingStarted], 'ExpiredAs
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Category_Name">
-                          <rd:DefaultName>Category_Name</rd:DefaultName>
+                        <Textbox Name="Categories">
+                          <rd:DefaultName>Categories</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Category_Name.Value</Value>
+                                  <Value>=Fields!Categories.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -968,15 +997,15 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[AssetAV.RecordingStarted], 'ExpiredAs
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="AssetAV_RecordingStarted">
-                          <rd:DefaultName>AssetAV_RecordingStarted</rd:DefaultName>
+                        <Textbox Name="CapturedOn">
+                          <rd:DefaultName>CapturedOn</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AssetAV_RecordingStarted.Value</Value>
+                                  <Value>=Fields!CapturedOn.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1026,15 +1055,15 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[AssetAV.RecordingStarted], 'ExpiredAs
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Evidence_ExpireOn">
-                          <rd:DefaultName>Evidence_ExpireOn</rd:DefaultName>
+                        <Textbox Name="Textbox2">
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Evidence_ExpireOn.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1318,7 +1347,7 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[AssetAV.RecordingStarted], 'ExpiredAs
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="ExpiredAssetDSName">
+    <ReportParameter Name="ExpiredAssetDSUsers">
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
@@ -1326,7 +1355,7 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[AssetAV.RecordingStarted], 'ExpiredAs
         </Values>
       </DefaultValue>
       <AllowBlank>true</AllowBlank>
-      <Prompt>Asset Name</Prompt>
+      <Prompt>Users</Prompt>
       <cl:ComponentMetadata>
         <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
       </cl:ComponentMetadata>
@@ -1340,7 +1369,7 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[AssetAV.RecordingStarted], 'ExpiredAs
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>ExpiredAssetDSName</ParameterName>
+          <ParameterName>ExpiredAssetDSUsers</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

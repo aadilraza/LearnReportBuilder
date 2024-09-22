@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1811.11</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-09-16T12:45:24.6295322Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-09-20T14:52:10.7844888Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -28,21 +28,21 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="UnCategorized">
+    <DataSet Name="UnCategorizedDS">
       <Query>
         <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
         <QueryParameters>
-          <QueryParameter Name="FromUnCategorizedDSCreatedOn">
-            <Value>=Format((Parameters!FromUnCategorizedDSCreatedOn.Value), "yyyy-MM-dd")</Value>
+          <QueryParameter Name="FromUnCategorizedDSCapturedOn">
+            <Value>=Format((Parameters!FromUnCategorizedDSCapturedOn.Value), "yyyy-MM-dd")</Value>
           </QueryParameter>
-          <QueryParameter Name="ToUnCategorizedDSCreatedOn">
-            <Value>=Format((Parameters!ToUnCategorizedDSCreatedOn.Value), "yyyy-MM-dd")</Value>
+          <QueryParameter Name="ToUnCategorizedDSCapturedOn">
+            <Value>=Format((Parameters!ToUnCategorizedDSCapturedOn.Value), "yyyy-MM-dd")</Value>
           </QueryParameter>
-          <QueryParameter Name="UnCategorizedDSStatusId">
-            <Value>=Parameters!UnCategorizedDSStatusId.Value</Value>
+          <QueryParameter Name="UnCategorizedDSAssetStatus1StatusName">
+            <Value>=Parameters!UnCategorizedDSAssetStatus1StatusName.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="UnCategorizedDSAssetTypeId">
-            <Value>=Parameters!UnCategorizedDSAssetTypeId.Value</Value>
+          <QueryParameter Name="UnCategorizedDSAssetType1TypeName">
+            <Value>=Parameters!UnCategorizedDSAssetType1TypeName.Value</Value>
           </QueryParameter>
         </QueryParameters>
         <rd:DesignerState>
@@ -65,111 +65,12 @@
                   <Item>
                     <ID xsi:type="Level">
                       <DimensionName>UnCategorizedDS</DimensionName>
-                      <HierarchyName>AssetAV.Duration</HierarchyName>
-                      <HierarchyUniqueName>[UnCategorizedDS].[AssetAV.Duration]</HierarchyUniqueName>
-                      <LevelName>AssetAV.Duration</LevelName>
-                      <UniqueName>[UnCategorizedDS].[AssetAV.Duration].[AssetAV.Duration]</UniqueName>
-                    </ID>
-                    <ItemCaption>AssetAV.Duration</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>UnCategorizedDS</DimensionName>
-                      <HierarchyName>User.UserInfo.FName</HierarchyName>
-                      <HierarchyUniqueName>[UnCategorizedDS].[User.UserInfo.FName]</HierarchyUniqueName>
-                      <LevelName>User.UserInfo.FName</LevelName>
-                      <UniqueName>[UnCategorizedDS].[User.UserInfo.FName].[User.UserInfo.FName]</UniqueName>
-                    </ID>
-                    <ItemCaption>User.UserInfo.FName</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>UnCategorizedDS</DimensionName>
-                      <HierarchyName>User.UserInfo.LName</HierarchyName>
-                      <HierarchyUniqueName>[UnCategorizedDS].[User.UserInfo.LName]</HierarchyUniqueName>
-                      <LevelName>User.UserInfo.LName</LevelName>
-                      <UniqueName>[UnCategorizedDS].[User.UserInfo.LName].[User.UserInfo.LName]</UniqueName>
-                    </ID>
-                    <ItemCaption>User.UserInfo.LName</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>UnCategorizedDS</DimensionName>
-                      <HierarchyName>AssetTypeId</HierarchyName>
-                      <HierarchyUniqueName>[UnCategorizedDS].[AssetTypeId]</HierarchyUniqueName>
-                      <LevelName>AssetTypeId</LevelName>
-                      <UniqueName>[UnCategorizedDS].[AssetTypeId].[AssetTypeId]</UniqueName>
-                    </ID>
-                    <ItemCaption>AssetTypeId</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>UnCategorizedDS</DimensionName>
-                      <HierarchyName>CreatedOn</HierarchyName>
-                      <HierarchyUniqueName>[UnCategorizedDS].[CreatedOn]</HierarchyUniqueName>
-                      <LevelName>CreatedOn</LevelName>
-                      <UniqueName>[UnCategorizedDS].[CreatedOn].[CreatedOn]</UniqueName>
-                    </ID>
-                    <ItemCaption>CreatedOn</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>UnCategorizedDS</DimensionName>
-                      <HierarchyName>StatusId</HierarchyName>
-                      <HierarchyUniqueName>[UnCategorizedDS].[StatusId]</HierarchyUniqueName>
-                      <LevelName>StatusId</LevelName>
-                      <UniqueName>[UnCategorizedDS].[StatusId].[StatusId]</UniqueName>
-                    </ID>
-                    <ItemCaption>StatusId</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>UnCategorizedDS</DimensionName>
-                      <HierarchyName>Evidence.HoldUntil</HierarchyName>
-                      <HierarchyUniqueName>[UnCategorizedDS].[Evidence.HoldUntil]</HierarchyUniqueName>
-                      <LevelName>Evidence.HoldUntil</LevelName>
-                      <UniqueName>[UnCategorizedDS].[Evidence.HoldUntil].[Evidence.HoldUntil]</UniqueName>
-                    </ID>
-                    <ItemCaption>Evidence.HoldUntil</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>UnCategorizedDS</DimensionName>
-                      <HierarchyName>Evidence.ExpireOn</HierarchyName>
-                      <HierarchyUniqueName>[UnCategorizedDS].[Evidence.ExpireOn]</HierarchyUniqueName>
-                      <LevelName>Evidence.ExpireOn</LevelName>
-                      <UniqueName>[UnCategorizedDS].[Evidence.ExpireOn].[Evidence.ExpireOn]</UniqueName>
-                    </ID>
-                    <ItemCaption>Evidence.ExpireOn</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>UnCategorizedDS</DimensionName>
                       <HierarchyName>Unit.1.Name</HierarchyName>
                       <HierarchyUniqueName>[UnCategorizedDS].[Unit.1.Name]</HierarchyUniqueName>
                       <LevelName>Unit.1.Name</LevelName>
                       <UniqueName>[UnCategorizedDS].[Unit.1.Name].[Unit.1.Name]</UniqueName>
                     </ID>
                     <ItemCaption>Unit.1.Name</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>UnCategorizedDS</DimensionName>
-                      <HierarchyName>AssetAV.RecordingStarted</HierarchyName>
-                      <HierarchyUniqueName>[UnCategorizedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
-                      <LevelName>AssetAV.RecordingStarted</LevelName>
-                      <UniqueName>[UnCategorizedDS].[AssetAV.RecordingStarted].[AssetAV.RecordingStarted]</UniqueName>
-                    </ID>
-                    <ItemCaption>AssetAV.RecordingStarted</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
                   <Item>
@@ -197,17 +98,6 @@
                   <Item>
                     <ID xsi:type="Level">
                       <DimensionName>UnCategorizedDS</DimensionName>
-                      <HierarchyName>AssetFile.UploadCompletedOn</HierarchyName>
-                      <HierarchyUniqueName>[UnCategorizedDS].[AssetFile.UploadCompletedOn]</HierarchyUniqueName>
-                      <LevelName>AssetFile.UploadCompletedOn</LevelName>
-                      <UniqueName>[UnCategorizedDS].[AssetFile.UploadCompletedOn].[AssetFile.UploadCompletedOn]</UniqueName>
-                    </ID>
-                    <ItemCaption>AssetFile.UploadCompletedOn</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>UnCategorizedDS</DimensionName>
                       <HierarchyName>Unit.1.Station.Name</HierarchyName>
                       <HierarchyUniqueName>[UnCategorizedDS].[Unit.1.Station.Name]</HierarchyUniqueName>
                       <LevelName>Unit.1.Station.Name</LevelName>
@@ -227,6 +117,50 @@
                     <ItemCaption>AssetType.1.TypeName</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>UnCategorizedDS</DimensionName>
+                      <HierarchyName>CapturedOn</HierarchyName>
+                      <HierarchyUniqueName>[UnCategorizedDS].[CapturedOn]</HierarchyUniqueName>
+                      <LevelName>CapturedOn</LevelName>
+                      <UniqueName>[UnCategorizedDS].[CapturedOn].[CapturedOn]</UniqueName>
+                    </ID>
+                    <ItemCaption>CapturedOn</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>UnCategorizedDS</DimensionName>
+                      <HierarchyName>UploadCompletedOn</HierarchyName>
+                      <HierarchyUniqueName>[UnCategorizedDS].[UploadCompletedOn]</HierarchyUniqueName>
+                      <LevelName>UploadCompletedOn</LevelName>
+                      <UniqueName>[UnCategorizedDS].[UploadCompletedOn].[UploadCompletedOn]</UniqueName>
+                    </ID>
+                    <ItemCaption>UploadCompletedOn</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>UnCategorizedDS</DimensionName>
+                      <HierarchyName>AssetDuration</HierarchyName>
+                      <HierarchyUniqueName>[UnCategorizedDS].[AssetDuration]</HierarchyUniqueName>
+                      <LevelName>AssetDuration</LevelName>
+                      <UniqueName>[UnCategorizedDS].[AssetDuration].[AssetDuration]</UniqueName>
+                    </ID>
+                    <ItemCaption>AssetDuration</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>UnCategorizedDS</DimensionName>
+                      <HierarchyName>Users</HierarchyName>
+                      <HierarchyUniqueName>[UnCategorizedDS].[Users]</HierarchyUniqueName>
+                      <LevelName>Users</LevelName>
+                      <UniqueName>[UnCategorizedDS].[Users].[Users]</UniqueName>
+                    </ID>
+                    <ItemCaption>Users</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
                 </Items>
               </Select>
               <AutoExecute>false</AutoExecute>
@@ -234,7 +168,7 @@
               <Filter>
                 <FilterItems>
                   <FilterItem>
-                    <HierarchyUniqueName>[UnCategorizedDS].[CreatedOn]</HierarchyUniqueName>
+                    <HierarchyUniqueName>[UnCategorizedDS].[CapturedOn]</HierarchyUniqueName>
                     <Condition xsi:type="Range">
                       <Basis>Member</Basis>
                       <From />
@@ -244,14 +178,14 @@
                     </Condition>
                   </FilterItem>
                   <FilterItem>
-                    <HierarchyUniqueName>[UnCategorizedDS].[StatusId]</HierarchyUniqueName>
+                    <HierarchyUniqueName>[UnCategorizedDS].[AssetStatus.1.StatusName]</HierarchyUniqueName>
                     <Condition xsi:type="EqualTo">
                       <Members />
                       <Parametrized>true</Parametrized>
                     </Condition>
                   </FilterItem>
                   <FilterItem>
-                    <HierarchyUniqueName>[UnCategorizedDS].[AssetTypeId]</HierarchyUniqueName>
+                    <HierarchyUniqueName>[UnCategorizedDS].[AssetType.1.TypeName]</HierarchyUniqueName>
                     <Condition xsi:type="EqualTo">
                       <Members />
                       <Parametrized>true</Parametrized>
@@ -266,23 +200,23 @@
               </QueryProperties>
             </QuerySpecification>
             <Query>
-              <Statement>DEFINE VAR vFromUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCreatedOn) = 1, IF(@FromUnCategorizedDSCreatedOn &lt;&gt; "", @FromUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vFromUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-VAR vToUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@ToUnCategorizedDSCreatedOn) = 1, IF(@ToUnCategorizedDSCreatedOn &lt;&gt; "", @ToUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@ToUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@ToUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vToUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@ToUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@ToUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('UnCategorizedDS'[Name], 'UnCategorizedDS'[AssetAV.Duration], 'UnCategorizedDS'[User.UserInfo.FName], 'UnCategorizedDS'[User.UserInfo.LName], 'UnCategorizedDS'[AssetTypeId], 'UnCategorizedDS'[CreatedOn], 'UnCategorizedDS'[StatusId], 'UnCategorizedDS'[Evidence.HoldUntil], 'UnCategorizedDS'[Evidence.ExpireOn], 'UnCategorizedDS'[Unit.1.Name], 'UnCategorizedDS'[AssetAV.RecordingStarted], 'UnCategorizedDS'[AssetStatus.1.StatusName], 'UnCategorizedDS'[RetentionSpan], 'UnCategorizedDS'[AssetFile.UploadCompletedOn], 'UnCategorizedDS'[Unit.1.Station.Name], 'UnCategorizedDS'[AssetType.1.TypeName], FILTER(VALUES('UnCategorizedDS'[CreatedOn]), (vFromUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCreatedOn1) + TIMEVALUE(vFromUnCategorizedDSCreatedOn1)) &amp;&amp; (vToUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &lt;= DATEVALUE(vToUnCategorizedDSCreatedOn1) + TIMEVALUE(vToUnCategorizedDSCreatedOn1))), RSCustomDaxFilter(@UnCategorizedDSStatusId,EqualToCondition,[UnCategorizedDS].[StatusId],Int64), RSCustomDaxFilter(@UnCategorizedDSAssetTypeId,EqualToCondition,[UnCategorizedDS].[AssetTypeId],Int64))</Statement>
+              <Statement>DEFINE VAR vFromUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCapturedOn) = 1, IF(@FromUnCategorizedDSCapturedOn &lt;&gt; "", @FromUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vFromUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+VAR vToUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@ToUnCategorizedDSCapturedOn) = 1, IF(@ToUnCategorizedDSCapturedOn &lt;&gt; "", @ToUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@ToUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@ToUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vToUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@ToUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@ToUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+EVALUATE SUMMARIZECOLUMNS('UnCategorizedDS'[Name], 'UnCategorizedDS'[Unit.1.Name], 'UnCategorizedDS'[AssetStatus.1.StatusName], 'UnCategorizedDS'[RetentionSpan], 'UnCategorizedDS'[Unit.1.Station.Name], 'UnCategorizedDS'[AssetType.1.TypeName], 'UnCategorizedDS'[CapturedOn], 'UnCategorizedDS'[UploadCompletedOn], 'UnCategorizedDS'[AssetDuration], 'UnCategorizedDS'[Users], FILTER(VALUES('UnCategorizedDS'[CapturedOn]), (vFromUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCapturedOn1) + TIMEVALUE(vFromUnCategorizedDSCapturedOn1)) &amp;&amp; (vToUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &lt;= DATEVALUE(vToUnCategorizedDSCapturedOn1) + TIMEVALUE(vToUnCategorizedDSCapturedOn1))), RSCustomDaxFilter(@UnCategorizedDSAssetStatus1StatusName,EqualToCondition,[UnCategorizedDS].[AssetStatus.1.StatusName],String), RSCustomDaxFilter(@UnCategorizedDSAssetType1TypeName,EqualToCondition,[UnCategorizedDS].[AssetType.1.TypeName],String))</Statement>
               <ParameterDefinitions>
                 <ParameterDefinition>
-                  <Name>FromUnCategorizedDSCreatedOn</Name>
+                  <Name>FromUnCategorizedDSCapturedOn</Name>
                   <Usage>RangeFrom</Usage>
                   <DbType>DateTime</DbType>
                   <DefaultValues>
                     <DefaultValue />
                   </DefaultValues>
-                  <Caption>From CreatedOn</Caption>
-                  <HierarchyUniqueName>[UnCategorizedDS].[CreatedOn]</HierarchyUniqueName>
+                  <Caption>From CapturedOn</Caption>
+                  <HierarchyUniqueName>[UnCategorizedDS].[CapturedOn]</HierarchyUniqueName>
                   <ParameterValuesQuery>
-                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[CreatedOn], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[CreatedOn], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'UnCategorizedDS'[CreatedOn], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[CreatedOn]", 'UnCategorizedDS'[CreatedOn]) order by 'UnCategorizedDS'[CreatedOn], [ParameterLevel]</Statement>
+                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[CapturedOn], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[CapturedOn], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'UnCategorizedDS'[CapturedOn], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[CapturedOn]", 'UnCategorizedDS'[CapturedOn]) order by 'UnCategorizedDS'[CapturedOn], [ParameterLevel]</Statement>
                     <ParameterizedStatement>
                       <ReferencedParameters />
                     </ParameterizedStatement>
@@ -290,25 +224,25 @@ EVALUATE SUMMARIZECOLUMNS('UnCategorizedDS'[Name], 'UnCategorizedDS'[AssetAV.Dur
                   <AllowBlank>true</AllowBlank>
                 </ParameterDefinition>
                 <ParameterDefinition>
-                  <Name>ToUnCategorizedDSCreatedOn</Name>
+                  <Name>ToUnCategorizedDSCapturedOn</Name>
                   <Usage>RangeTo</Usage>
                   <DbType>DateTime</DbType>
                   <DefaultValues>
                     <DefaultValue />
                   </DefaultValues>
-                  <Caption>To CreatedOn</Caption>
-                  <HierarchyUniqueName>[UnCategorizedDS].[CreatedOn]</HierarchyUniqueName>
+                  <Caption>To CapturedOn</Caption>
+                  <HierarchyUniqueName>[UnCategorizedDS].[CapturedOn]</HierarchyUniqueName>
                   <ParameterValuesQuery>
-                    <Statement>DEFINE VAR vFromUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCreatedOn) = 1, IF(@FromUnCategorizedDSCreatedOn &lt;&gt; "", @FromUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vFromUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[CreatedOn], "h0"), FILTER(VALUES('UnCategorizedDS'[CreatedOn]), (vFromUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCreatedOn1) + TIMEVALUE(vFromUnCategorizedDSCreatedOn1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[CreatedOn], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'UnCategorizedDS'[CreatedOn], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[CreatedOn]", 'UnCategorizedDS'[CreatedOn]) order by 'UnCategorizedDS'[CreatedOn], [ParameterLevel]</Statement>
+                    <Statement>DEFINE VAR vFromUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCapturedOn) = 1, IF(@FromUnCategorizedDSCapturedOn &lt;&gt; "", @FromUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vFromUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[CapturedOn], "h0"), FILTER(VALUES('UnCategorizedDS'[CapturedOn]), (vFromUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCapturedOn1) + TIMEVALUE(vFromUnCategorizedDSCapturedOn1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[CapturedOn], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'UnCategorizedDS'[CapturedOn], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[CapturedOn]", 'UnCategorizedDS'[CapturedOn]) order by 'UnCategorizedDS'[CapturedOn], [ParameterLevel]</Statement>
                     <ParameterizedStatement>
-                      <Statement>DEFINE VAR vFromUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCreatedOn) = 1, IF(@FromUnCategorizedDSCreatedOn &lt;&gt; "", @FromUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vFromUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[CreatedOn], "h0"), FILTER(VALUES('UnCategorizedDS'[CreatedOn]), (vFromUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCreatedOn1) + TIMEVALUE(vFromUnCategorizedDSCreatedOn1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[CreatedOn], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'UnCategorizedDS'[CreatedOn], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[CreatedOn]", 'UnCategorizedDS'[CreatedOn]) order by 'UnCategorizedDS'[CreatedOn], [ParameterLevel]</Statement>
+                      <Statement>DEFINE VAR vFromUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCapturedOn) = 1, IF(@FromUnCategorizedDSCapturedOn &lt;&gt; "", @FromUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vFromUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[CapturedOn], "h0"), FILTER(VALUES('UnCategorizedDS'[CapturedOn]), (vFromUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCapturedOn1) + TIMEVALUE(vFromUnCategorizedDSCapturedOn1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[CapturedOn], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'UnCategorizedDS'[CapturedOn], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[CapturedOn]", 'UnCategorizedDS'[CapturedOn]) order by 'UnCategorizedDS'[CapturedOn], [ParameterLevel]</Statement>
                       <ReferencedParameters>
                         <ReferencedParameter>
-                          <Name>FromUnCategorizedDSCreatedOn</Name>
+                          <Name>FromUnCategorizedDSCapturedOn</Name>
                         </ReferencedParameter>
                       </ReferencedParameters>
                     </ParameterizedStatement>
@@ -316,29 +250,28 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCa
                   <AllowBlank>true</AllowBlank>
                 </ParameterDefinition>
                 <ParameterDefinition>
-                  <Name>UnCategorizedDSStatusId</Name>
-                  <DbType>Int64</DbType>
+                  <Name>UnCategorizedDSAssetStatus1StatusName</Name>
                   <DefaultValues />
-                  <Caption>StatusId</Caption>
-                  <HierarchyUniqueName>[UnCategorizedDS].[StatusId]</HierarchyUniqueName>
+                  <Caption>AssetStatus.1.StatusName</Caption>
+                  <HierarchyUniqueName>[UnCategorizedDS].[AssetStatus.1.StatusName]</HierarchyUniqueName>
                   <ParameterValuesQuery>
-                    <Statement>DEFINE VAR vFromUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCreatedOn) = 1, IF(@FromUnCategorizedDSCreatedOn &lt;&gt; "", @FromUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vFromUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-VAR vToUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@ToUnCategorizedDSCreatedOn) = 1, IF(@ToUnCategorizedDSCreatedOn &lt;&gt; "", @ToUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@ToUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@ToUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vToUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@ToUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@ToUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[StatusId], "h0"), FILTER(VALUES('UnCategorizedDS'[CreatedOn]), (vFromUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCreatedOn1) + TIMEVALUE(vFromUnCategorizedDSCreatedOn1)) &amp;&amp; (vToUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &lt;= DATEVALUE(vToUnCategorizedDSCreatedOn1) + TIMEVALUE(vToUnCategorizedDSCreatedOn1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[StatusId], "Blank()"), "ParameterValue", 'UnCategorizedDS'[StatusId], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[StatusId]", 'UnCategorizedDS'[StatusId]) order by 'UnCategorizedDS'[StatusId], [ParameterLevel]</Statement>
+                    <Statement>DEFINE VAR vFromUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCapturedOn) = 1, IF(@FromUnCategorizedDSCapturedOn &lt;&gt; "", @FromUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vFromUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+VAR vToUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@ToUnCategorizedDSCapturedOn) = 1, IF(@ToUnCategorizedDSCapturedOn &lt;&gt; "", @ToUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@ToUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@ToUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vToUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@ToUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@ToUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[AssetStatus.1.StatusName], "h0"), FILTER(VALUES('UnCategorizedDS'[CapturedOn]), (vFromUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCapturedOn1) + TIMEVALUE(vFromUnCategorizedDSCapturedOn1)) &amp;&amp; (vToUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &lt;= DATEVALUE(vToUnCategorizedDSCapturedOn1) + TIMEVALUE(vToUnCategorizedDSCapturedOn1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[AssetStatus.1.StatusName], "Blank()"), "ParameterValue", 'UnCategorizedDS'[AssetStatus.1.StatusName], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[AssetStatus.1.StatusName]", 'UnCategorizedDS'[AssetStatus.1.StatusName]) order by 'UnCategorizedDS'[AssetStatus.1.StatusName], [ParameterLevel]</Statement>
                     <ParameterizedStatement>
-                      <Statement>DEFINE VAR vFromUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCreatedOn) = 1, IF(@FromUnCategorizedDSCreatedOn &lt;&gt; "", @FromUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vFromUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-VAR vToUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@ToUnCategorizedDSCreatedOn) = 1, IF(@ToUnCategorizedDSCreatedOn &lt;&gt; "", @ToUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@ToUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@ToUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vToUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@ToUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@ToUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[StatusId], "h0"), FILTER(VALUES('UnCategorizedDS'[CreatedOn]), (vFromUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCreatedOn1) + TIMEVALUE(vFromUnCategorizedDSCreatedOn1)) &amp;&amp; (vToUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &lt;= DATEVALUE(vToUnCategorizedDSCreatedOn1) + TIMEVALUE(vToUnCategorizedDSCreatedOn1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[StatusId], "Blank()"), "ParameterValue", 'UnCategorizedDS'[StatusId], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[StatusId]", 'UnCategorizedDS'[StatusId]) order by 'UnCategorizedDS'[StatusId], [ParameterLevel]</Statement>
+                      <Statement>DEFINE VAR vFromUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCapturedOn) = 1, IF(@FromUnCategorizedDSCapturedOn &lt;&gt; "", @FromUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vFromUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+VAR vToUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@ToUnCategorizedDSCapturedOn) = 1, IF(@ToUnCategorizedDSCapturedOn &lt;&gt; "", @ToUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@ToUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@ToUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vToUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@ToUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@ToUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[AssetStatus.1.StatusName], "h0"), FILTER(VALUES('UnCategorizedDS'[CapturedOn]), (vFromUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCapturedOn1) + TIMEVALUE(vFromUnCategorizedDSCapturedOn1)) &amp;&amp; (vToUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &lt;= DATEVALUE(vToUnCategorizedDSCapturedOn1) + TIMEVALUE(vToUnCategorizedDSCapturedOn1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[AssetStatus.1.StatusName], "Blank()"), "ParameterValue", 'UnCategorizedDS'[AssetStatus.1.StatusName], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[AssetStatus.1.StatusName]", 'UnCategorizedDS'[AssetStatus.1.StatusName]) order by 'UnCategorizedDS'[AssetStatus.1.StatusName], [ParameterLevel]</Statement>
                       <ReferencedParameters>
                         <ReferencedParameter>
-                          <Name>FromUnCategorizedDSCreatedOn</Name>
+                          <Name>FromUnCategorizedDSCapturedOn</Name>
                         </ReferencedParameter>
                         <ReferencedParameter>
-                          <Name>ToUnCategorizedDSCreatedOn</Name>
+                          <Name>ToUnCategorizedDSCapturedOn</Name>
                         </ReferencedParameter>
                       </ReferencedParameters>
                     </ParameterizedStatement>
@@ -347,32 +280,31 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCa
                   <AllowBlank>true</AllowBlank>
                 </ParameterDefinition>
                 <ParameterDefinition>
-                  <Name>UnCategorizedDSAssetTypeId</Name>
-                  <DbType>Int64</DbType>
+                  <Name>UnCategorizedDSAssetType1TypeName</Name>
                   <DefaultValues />
-                  <Caption>AssetTypeId</Caption>
-                  <HierarchyUniqueName>[UnCategorizedDS].[AssetTypeId]</HierarchyUniqueName>
+                  <Caption>AssetType.1.TypeName</Caption>
+                  <HierarchyUniqueName>[UnCategorizedDS].[AssetType.1.TypeName]</HierarchyUniqueName>
                   <ParameterValuesQuery>
-                    <Statement>DEFINE VAR vFromUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCreatedOn) = 1, IF(@FromUnCategorizedDSCreatedOn &lt;&gt; "", @FromUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vFromUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-VAR vToUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@ToUnCategorizedDSCreatedOn) = 1, IF(@ToUnCategorizedDSCreatedOn &lt;&gt; "", @ToUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@ToUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@ToUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vToUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@ToUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@ToUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[AssetTypeId], "h0"), FILTER(VALUES('UnCategorizedDS'[CreatedOn]), (vFromUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCreatedOn1) + TIMEVALUE(vFromUnCategorizedDSCreatedOn1)) &amp;&amp; (vToUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &lt;= DATEVALUE(vToUnCategorizedDSCreatedOn1) + TIMEVALUE(vToUnCategorizedDSCreatedOn1))), RSCustomDaxFilter(@UnCategorizedDSStatusId,EqualToCondition,[UnCategorizedDS].[StatusId],Int64)), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[AssetTypeId], "Blank()"), "ParameterValue", 'UnCategorizedDS'[AssetTypeId], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[AssetTypeId]", 'UnCategorizedDS'[AssetTypeId]) order by 'UnCategorizedDS'[AssetTypeId], [ParameterLevel]</Statement>
+                    <Statement>DEFINE VAR vFromUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCapturedOn) = 1, IF(@FromUnCategorizedDSCapturedOn &lt;&gt; "", @FromUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vFromUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+VAR vToUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@ToUnCategorizedDSCapturedOn) = 1, IF(@ToUnCategorizedDSCapturedOn &lt;&gt; "", @ToUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@ToUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@ToUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vToUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@ToUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@ToUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[AssetType.1.TypeName], "h0"), FILTER(VALUES('UnCategorizedDS'[CapturedOn]), (vFromUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCapturedOn1) + TIMEVALUE(vFromUnCategorizedDSCapturedOn1)) &amp;&amp; (vToUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &lt;= DATEVALUE(vToUnCategorizedDSCapturedOn1) + TIMEVALUE(vToUnCategorizedDSCapturedOn1))), RSCustomDaxFilter(@UnCategorizedDSAssetStatus1StatusName,EqualToCondition,[UnCategorizedDS].[AssetStatus.1.StatusName],String)), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[AssetType.1.TypeName], "Blank()"), "ParameterValue", 'UnCategorizedDS'[AssetType.1.TypeName], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[AssetType.1.TypeName]", 'UnCategorizedDS'[AssetType.1.TypeName]) order by 'UnCategorizedDS'[AssetType.1.TypeName], [ParameterLevel]</Statement>
                     <ParameterizedStatement>
-                      <Statement>DEFINE VAR vFromUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCreatedOn) = 1, IF(@FromUnCategorizedDSCreatedOn &lt;&gt; "", @FromUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vFromUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-VAR vToUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@ToUnCategorizedDSCreatedOn) = 1, IF(@ToUnCategorizedDSCreatedOn &lt;&gt; "", @ToUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@ToUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@ToUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vToUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@ToUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@ToUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[AssetTypeId], "h0"), FILTER(VALUES('UnCategorizedDS'[CreatedOn]), (vFromUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCreatedOn1) + TIMEVALUE(vFromUnCategorizedDSCreatedOn1)) &amp;&amp; (vToUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &lt;= DATEVALUE(vToUnCategorizedDSCreatedOn1) + TIMEVALUE(vToUnCategorizedDSCreatedOn1))), RSCustomDaxFilter(@UnCategorizedDSStatusId,EqualToCondition,[UnCategorizedDS].[StatusId],Int64)), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[AssetTypeId], "Blank()"), "ParameterValue", 'UnCategorizedDS'[AssetTypeId], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[AssetTypeId]", 'UnCategorizedDS'[AssetTypeId]) order by 'UnCategorizedDS'[AssetTypeId], [ParameterLevel]</Statement>
+                      <Statement>DEFINE VAR vFromUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCapturedOn) = 1, IF(@FromUnCategorizedDSCapturedOn &lt;&gt; "", @FromUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vFromUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+VAR vToUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@ToUnCategorizedDSCapturedOn) = 1, IF(@ToUnCategorizedDSCapturedOn &lt;&gt; "", @ToUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@ToUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@ToUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vToUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@ToUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@ToUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCategorizedDS'[AssetType.1.TypeName], "h0"), FILTER(VALUES('UnCategorizedDS'[CapturedOn]), (vFromUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCapturedOn1) + TIMEVALUE(vFromUnCategorizedDSCapturedOn1)) &amp;&amp; (vToUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &lt;= DATEVALUE(vToUnCategorizedDSCapturedOn1) + TIMEVALUE(vToUnCategorizedDSCapturedOn1))), RSCustomDaxFilter(@UnCategorizedDSAssetStatus1StatusName,EqualToCondition,[UnCategorizedDS].[AssetStatus.1.StatusName],String)), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'UnCategorizedDS'[AssetType.1.TypeName], "Blank()"), "ParameterValue", 'UnCategorizedDS'[AssetType.1.TypeName], "ParameterLevel", [ParameterLevel], "'UnCategorizedDS'[AssetType.1.TypeName]", 'UnCategorizedDS'[AssetType.1.TypeName]) order by 'UnCategorizedDS'[AssetType.1.TypeName], [ParameterLevel]</Statement>
                       <ReferencedParameters>
                         <ReferencedParameter>
-                          <Name>FromUnCategorizedDSCreatedOn</Name>
+                          <Name>FromUnCategorizedDSCapturedOn</Name>
                         </ReferencedParameter>
                         <ReferencedParameter>
-                          <Name>ToUnCategorizedDSCreatedOn</Name>
+                          <Name>ToUnCategorizedDSCapturedOn</Name>
                         </ReferencedParameter>
                         <ReferencedParameter>
-                          <Name>UnCategorizedDSStatusId</Name>
+                          <Name>UnCategorizedDSAssetStatus1StatusName</Name>
                         </ReferencedParameter>
                       </ReferencedParameters>
                     </ParameterizedStatement>
@@ -384,56 +316,36 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('UnCa
             </Query>
           </QueryDefinition>
         </rd:DesignerState>
-        <CommandText>DEFINE VAR vFromUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCreatedOn) = 1, IF(@FromUnCategorizedDSCreatedOn &lt;&gt; "", @FromUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vFromUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-VAR vToUnCategorizedDSCreatedOn1 = IF(PATHLENGTH(@ToUnCategorizedDSCreatedOn) = 1, IF(@ToUnCategorizedDSCreatedOn &lt;&gt; "", @ToUnCategorizedDSCreatedOn, BLANK()), IF(PATHITEM(@ToUnCategorizedDSCreatedOn, 2) &lt;&gt; "", PATHITEM(@ToUnCategorizedDSCreatedOn, 2), BLANK()))
-VAR vToUnCategorizedDSCreatedOn1ALL = PATHLENGTH(@ToUnCategorizedDSCreatedOn) &gt; 1 &amp;&amp; PATHITEM(@ToUnCategorizedDSCreatedOn, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('UnCategorizedDS'[Name], 'UnCategorizedDS'[AssetAV.Duration], 'UnCategorizedDS'[User.UserInfo.FName], 'UnCategorizedDS'[User.UserInfo.LName], 'UnCategorizedDS'[AssetTypeId], 'UnCategorizedDS'[CreatedOn], 'UnCategorizedDS'[StatusId], 'UnCategorizedDS'[Evidence.HoldUntil], 'UnCategorizedDS'[Evidence.ExpireOn], 'UnCategorizedDS'[Unit.1.Name], 'UnCategorizedDS'[AssetAV.RecordingStarted], 'UnCategorizedDS'[AssetStatus.1.StatusName], 'UnCategorizedDS'[RetentionSpan], 'UnCategorizedDS'[AssetFile.UploadCompletedOn], 'UnCategorizedDS'[Unit.1.Station.Name], 'UnCategorizedDS'[AssetType.1.TypeName], FILTER(VALUES('UnCategorizedDS'[CreatedOn]), (vFromUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCreatedOn1) + TIMEVALUE(vFromUnCategorizedDSCreatedOn1)) &amp;&amp; (vToUnCategorizedDSCreatedOn1ALL || 'UnCategorizedDS'[CreatedOn] &lt;= DATEVALUE(vToUnCategorizedDSCreatedOn1) + TIMEVALUE(vToUnCategorizedDSCreatedOn1))), RSCustomDaxFilter(@UnCategorizedDSStatusId,EqualToCondition,[UnCategorizedDS].[StatusId],Int64), RSCustomDaxFilter(@UnCategorizedDSAssetTypeId,EqualToCondition,[UnCategorizedDS].[AssetTypeId],Int64))</CommandText>
+        <CommandText>DEFINE VAR vFromUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@FromUnCategorizedDSCapturedOn) = 1, IF(@FromUnCategorizedDSCapturedOn &lt;&gt; "", @FromUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@FromUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@FromUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vFromUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@FromUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@FromUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+VAR vToUnCategorizedDSCapturedOn1 = IF(PATHLENGTH(@ToUnCategorizedDSCapturedOn) = 1, IF(@ToUnCategorizedDSCapturedOn &lt;&gt; "", @ToUnCategorizedDSCapturedOn, BLANK()), IF(PATHITEM(@ToUnCategorizedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@ToUnCategorizedDSCapturedOn, 2), BLANK()))
+VAR vToUnCategorizedDSCapturedOn1ALL = PATHLENGTH(@ToUnCategorizedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@ToUnCategorizedDSCapturedOn, 1, 1) &lt; 1
+EVALUATE SUMMARIZECOLUMNS('UnCategorizedDS'[Name], 'UnCategorizedDS'[Unit.1.Name], 'UnCategorizedDS'[AssetStatus.1.StatusName], 'UnCategorizedDS'[RetentionSpan], 'UnCategorizedDS'[Unit.1.Station.Name], 'UnCategorizedDS'[AssetType.1.TypeName], 'UnCategorizedDS'[CapturedOn], 'UnCategorizedDS'[UploadCompletedOn], 'UnCategorizedDS'[AssetDuration], 'UnCategorizedDS'[Users], FILTER(VALUES('UnCategorizedDS'[CapturedOn]), (vFromUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &gt;= DATEVALUE(vFromUnCategorizedDSCapturedOn1) + TIMEVALUE(vFromUnCategorizedDSCapturedOn1)) &amp;&amp; (vToUnCategorizedDSCapturedOn1ALL || 'UnCategorizedDS'[CapturedOn] &lt;= DATEVALUE(vToUnCategorizedDSCapturedOn1) + TIMEVALUE(vToUnCategorizedDSCapturedOn1))), RSCustomDaxFilter(@UnCategorizedDSAssetStatus1StatusName,EqualToCondition,[UnCategorizedDS].[AssetStatus.1.StatusName],String), RSCustomDaxFilter(@UnCategorizedDSAssetType1TypeName,EqualToCondition,[UnCategorizedDS].[AssetType.1.TypeName],String))</CommandText>
       </Query>
       <Fields>
         <Field Name="Name">
           <rd:TypeName>System.String</rd:TypeName>
           <DataField>UnCategorizedDS[Name]</DataField>
         </Field>
-        <Field Name="AssetAV_Duration">
+        <Field Name="CapturedOn">
           <rd:TypeName>System.String</rd:TypeName>
-          <DataField>UnCategorizedDS[AssetAV.Duration]</DataField>
+          <DataField>UnCategorizedDS[CapturedOn]</DataField>
         </Field>
-        <Field Name="User_UserInfo_FName">
+        <Field Name="UploadCompletedOn">
           <rd:TypeName>System.String</rd:TypeName>
-          <DataField>UnCategorizedDS[User.UserInfo.FName]</DataField>
+          <DataField>UnCategorizedDS[UploadCompletedOn]</DataField>
         </Field>
-        <Field Name="User_UserInfo_LName">
+        <Field Name="AssetDuration">
           <rd:TypeName>System.String</rd:TypeName>
-          <DataField>UnCategorizedDS[User.UserInfo.LName]</DataField>
-        </Field>
-        <Field Name="AssetTypeId">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>UnCategorizedDS[AssetTypeId]</DataField>
-        </Field>
-        <Field Name="CreatedOn">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>UnCategorizedDS[CreatedOn]</DataField>
-        </Field>
-        <Field Name="StatusId">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>UnCategorizedDS[StatusId]</DataField>
-        </Field>
-        <Field Name="Evidence_HoldUntil">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>UnCategorizedDS[Evidence.HoldUntil]</DataField>
-        </Field>
-        <Field Name="Evidence_ExpireOn">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>UnCategorizedDS[Evidence.ExpireOn]</DataField>
+          <DataField>UnCategorizedDS[AssetDuration]</DataField>
         </Field>
         <Field Name="Unit_1_Name">
           <rd:TypeName>System.String</rd:TypeName>
           <DataField>UnCategorizedDS[Unit.1.Name]</DataField>
         </Field>
-        <Field Name="AssetAV_RecordingStarted">
+        <Field Name="Users">
           <rd:TypeName>System.String</rd:TypeName>
-          <DataField>UnCategorizedDS[AssetAV.RecordingStarted]</DataField>
+          <DataField>UnCategorizedDS[Users]</DataField>
         </Field>
         <Field Name="AssetStatus_1_StatusName">
           <rd:TypeName>System.String</rd:TypeName>
@@ -442,10 +354,6 @@ EVALUATE SUMMARIZECOLUMNS('UnCategorizedDS'[Name], 'UnCategorizedDS'[AssetAV.Dur
         <Field Name="RetentionSpan">
           <rd:TypeName>System.String</rd:TypeName>
           <DataField>UnCategorizedDS[RetentionSpan]</DataField>
-        </Field>
-        <Field Name="AssetFile_UploadCompletedOn">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>UnCategorizedDS[AssetFile.UploadCompletedOn]</DataField>
         </Field>
         <Field Name="Unit_1_Station_Name">
           <rd:TypeName>System.String</rd:TypeName>
@@ -620,8 +528,8 @@ EVALUATE SUMMARIZECOLUMNS('UnCategorizedDS'[Name], 'UnCategorizedDS'[AssetAV.Dur
             </QuerySpecification>
             <Query>
               <Statement>EVALUATE 
-VAR MinDate = CALCULATE(MIN('UnCategorizedDS'[CreatedOn]))
-VAR MaxDate = CALCULATE(MAX('UnCategorizedDS'[CreatedOn]))
+VAR MinDate = CALCULATE(MIN('UnCategorizedDS'[CapturedOn]))
+VAR MaxDate = CALCULATE(MAX('UnCategorizedDS'[CapturedOn]))
 RETURN 
 ROW("MinDate", MinDate, "MaxDate", MaxDate)
 </Statement>
@@ -630,18 +538,19 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)
           </QueryDefinition>
         </rd:DesignerState>
         <CommandText>EVALUATE 
-VAR MinDate = CALCULATE(MIN('UnCategorizedDS'[CreatedOn]))
-VAR MaxDate = CALCULATE(MAX('UnCategorizedDS'[CreatedOn]))
+VAR MinDate = CALCULATE(MIN('UnCategorizedDS'[CapturedOn]))
+VAR MaxDate = CALCULATE(MAX('UnCategorizedDS'[CapturedOn]))
 RETURN 
-ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
+ROW("MinDate", MinDate, "MaxDate", MaxDate)
+</CommandText>
       </Query>
       <Fields>
         <Field Name="MinDate">
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
           <DataField>[MinDate]</DataField>
         </Field>
         <Field Name="MaxDate">
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
           <DataField>[MaxDate]</DataField>
         </Field>
       </Fields>
@@ -676,13 +585,13 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
                   <Width>3.28317cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.17733cm</Width>
+                  <Width>4.22155cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.48778cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.151cm</Width>
+                  <Width>6.04189cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1402,15 +1311,15 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="AssetAV_Duration">
-                          <rd:DefaultName>AssetAV_Duration</rd:DefaultName>
+                        <Textbox Name="AssetDuration">
+                          <rd:DefaultName>AssetDuration</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AssetAV_Duration.Value</Value>
+                                  <Value>=Fields!AssetDuration.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1518,15 +1427,15 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="User_UserInfo_FName">
-                          <rd:DefaultName>User_UserInfo_FName</rd:DefaultName>
+                        <Textbox Name="Users">
+                          <rd:DefaultName>Users</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!User_UserInfo_FName.Value</Value>
+                                  <Value>=Fields!Users.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1634,15 +1543,15 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="AssetAV_RecordingStarted">
-                          <rd:DefaultName>AssetAV_RecordingStarted</rd:DefaultName>
+                        <Textbox Name="CapturedOn">
+                          <rd:DefaultName>CapturedOn</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AssetAV_RecordingStarted.Value</Value>
+                                  <Value>=Fields!CapturedOn.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1692,15 +1601,15 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="AssetFile_UploadCompletedOn">
-                          <rd:DefaultName>AssetFile_UploadCompletedOn</rd:DefaultName>
+                        <Textbox Name="UploadCompletedOn">
+                          <rd:DefaultName>UploadCompletedOn</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AssetFile_UploadCompletedOn.Value</Value>
+                                  <Value>=Fields!UploadCompletedOn.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1894,9 +1803,9 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>UnCategorized</DataSetName>
+            <DataSetName>UnCategorizedDS</DataSetName>
             <Height>1.81383cm</Height>
-            <Width>39.96484cm</Width>
+            <Width>43.88773cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1911,7 +1820,7 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
           </Border>
         </Style>
       </Body>
-      <Width>399.6484mm</Width>
+      <Width>438.87731mm</Width>
       <Page>
         <PageHeader>
           <Height>16.72167mm</Height>
@@ -1959,7 +1868,7 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>11.51188mm</Height>
+          <Height>11.78277mm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2012,7 +1921,7 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
                 </Paragraph>
               </Paragraphs>
               <Top>0.5813mm</Top>
-              <Left>348.84837mm</Left>
+              <Left>388.07731mm</Left>
               <Height>10.72444mm</Height>
               <Width>50.8mm</Width>
               <ZIndex>1</ZIndex>
@@ -2046,7 +1955,7 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="FromUnCategorizedDSCreatedOn">
+    <ReportParameter Name="FromUnCategorizedDSCapturedOn">
       <DataType>DateTime</DataType>
       <DefaultValue>
         <DataSetReference>
@@ -2054,12 +1963,12 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
           <ValueField>MinDate</ValueField>
         </DataSetReference>
       </DefaultValue>
-      <Prompt>From Asset Created</Prompt>
+      <Prompt>From CapturedOn</Prompt>
       <cl:ComponentMetadata>
         <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
       </cl:ComponentMetadata>
     </ReportParameter>
-    <ReportParameter Name="ToUnCategorizedDSCreatedOn">
+    <ReportParameter Name="ToUnCategorizedDSCapturedOn">
       <DataType>DateTime</DataType>
       <DefaultValue>
         <DataSetReference>
@@ -2067,24 +1976,24 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
           <ValueField>MaxDate</ValueField>
         </DataSetReference>
       </DefaultValue>
-      <Prompt>To Asset Created</Prompt>
+      <Prompt>To CapturedOn</Prompt>
       <cl:ComponentMetadata>
         <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
       </cl:ComponentMetadata>
     </ReportParameter>
-    <ReportParameter Name="UnCategorizedDSStatusId">
-      <DataType>Integer</DataType>
+    <ReportParameter Name="UnCategorizedDSAssetStatus1StatusName">
+      <DataType>String</DataType>
       <DefaultValue>
         <DataSetReference>
           <DataSetName>UnCategorizedDSStatusId</DataSetName>
-          <ValueField>StatusId</ValueField>
+          <ValueField>StatusName</ValueField>
         </DataSetReference>
       </DefaultValue>
-      <Prompt>Status</Prompt>
+      <Prompt>Asset Status</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>UnCategorizedDSStatusId</DataSetName>
-          <ValueField>StatusId</ValueField>
+          <ValueField>StatusName</ValueField>
           <LabelField>StatusName</LabelField>
         </DataSetReference>
       </ValidValues>
@@ -2093,19 +2002,19 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
         <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
       </cl:ComponentMetadata>
     </ReportParameter>
-    <ReportParameter Name="UnCategorizedDSAssetTypeId">
-      <DataType>Integer</DataType>
+    <ReportParameter Name="UnCategorizedDSAssetType1TypeName">
+      <DataType>String</DataType>
       <DefaultValue>
         <DataSetReference>
           <DataSetName>UnCategorizedDSAssetTypeId</DataSetName>
-          <ValueField>TypeId</ValueField>
+          <ValueField>TypeName</ValueField>
         </DataSetReference>
       </DefaultValue>
-      <Prompt>Type</Prompt>
+      <Prompt>Asset Type</Prompt>
       <ValidValues>
         <DataSetReference>
           <DataSetName>UnCategorizedDSAssetTypeId</DataSetName>
-          <ValueField>TypeId</ValueField>
+          <ValueField>TypeName</ValueField>
           <LabelField>TypeName</LabelField>
         </DataSetReference>
       </ValidValues>
@@ -2123,22 +2032,22 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>FromUnCategorizedDSCreatedOn</ParameterName>
+          <ParameterName>FromUnCategorizedDSCapturedOn</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>ToUnCategorizedDSCreatedOn</ParameterName>
+          <ParameterName>ToUnCategorizedDSCapturedOn</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>UnCategorizedDSStatusId</ParameterName>
+          <ParameterName>UnCategorizedDSAssetStatus1StatusName</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>UnCategorizedDSAssetTypeId</ParameterName>
+          <ParameterName>UnCategorizedDSAssetType1TypeName</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
