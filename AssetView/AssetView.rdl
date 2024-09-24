@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1811.11</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-09-22T10:44:14.6271137Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-09-24T06:06:04.5937403Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -97,6 +97,61 @@
                     <ItemCaption>CaseID</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetViewedDS</DimensionName>
+                      <HierarchyName>AssetViewReason.ViewReason</HierarchyName>
+                      <HierarchyUniqueName>[AssetViewedDS].[AssetViewReason.ViewReason]</HierarchyUniqueName>
+                      <LevelName>AssetViewReason.ViewReason</LevelName>
+                      <UniqueName>[AssetViewedDS].[AssetViewReason.ViewReason].[AssetViewReason.ViewReason]</UniqueName>
+                    </ID>
+                    <ItemCaption>AssetViewReason.ViewReason</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetViewedDS</DimensionName>
+                      <HierarchyName>AssetViewReason.ViewDateTime</HierarchyName>
+                      <HierarchyUniqueName>[AssetViewedDS].[AssetViewReason.ViewDateTime]</HierarchyUniqueName>
+                      <LevelName>AssetViewReason.ViewDateTime</LevelName>
+                      <UniqueName>[AssetViewedDS].[AssetViewReason.ViewDateTime].[AssetViewReason.ViewDateTime]</UniqueName>
+                    </ID>
+                    <ItemCaption>AssetViewReason.ViewDateTime</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetViewedDS</DimensionName>
+                      <HierarchyName>AssetViewReason.CMT_User_RecId</HierarchyName>
+                      <HierarchyUniqueName>[AssetViewedDS].[AssetViewReason.CMT_User_RecId]</HierarchyUniqueName>
+                      <LevelName>AssetViewReason.CMT_User_RecId</LevelName>
+                      <UniqueName>[AssetViewedDS].[AssetViewReason.CMT_User_RecId].[AssetViewReason.CMT_User_RecId]</UniqueName>
+                    </ID>
+                    <ItemCaption>AssetViewReason.CMT_User_RecId</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetViewedDS</DimensionName>
+                      <HierarchyName>ViewerUserGroup</HierarchyName>
+                      <HierarchyUniqueName>[AssetViewedDS].[ViewerUserGroup]</HierarchyUniqueName>
+                      <LevelName>ViewerUserGroup</LevelName>
+                      <UniqueName>[AssetViewedDS].[ViewerUserGroup].[ViewerUserGroup]</UniqueName>
+                    </ID>
+                    <ItemCaption>ViewerUserGroup</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetViewedDS</DimensionName>
+                      <HierarchyName>AssetViewReason.SourceIPAddress</HierarchyName>
+                      <HierarchyUniqueName>[AssetViewedDS].[AssetViewReason.SourceIPAddress]</HierarchyUniqueName>
+                      <LevelName>AssetViewReason.SourceIPAddress</LevelName>
+                      <UniqueName>[AssetViewedDS].[AssetViewReason.SourceIPAddress].[AssetViewReason.SourceIPAddress]</UniqueName>
+                    </ID>
+                    <ItemCaption>AssetViewReason.SourceIPAddress</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
                 </Items>
               </Select>
               <AutoExecute>false</AutoExecute>
@@ -122,7 +177,7 @@
             <Query>
               <Statement>DEFINE VAR vAssetViewedDSName1 = IF(PATHLENGTH(@AssetViewedDSName) = 1, IF(@AssetViewedDSName &lt;&gt; "", @AssetViewedDSName, BLANK()), IF(PATHITEM(@AssetViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetViewedDSName, 2), BLANK()))
 VAR vAssetViewedDSName1ALL = PATHLENGTH(@AssetViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetViewedDSName, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'AssetViewedDS'[Users], 'AssetViewedDS'[Category], 'AssetViewedDS'[CaseID], FILTER(VALUES('AssetViewedDS'[Name]), (vAssetViewedDSName1ALL || IF(vAssetViewedDSName1 &lt;&gt; "", SEARCH(vAssetViewedDSName1, 'AssetViewedDS'[Name], 1, 0) &gt; 0, TRUE))))</Statement>
+EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'AssetViewedDS'[Users], 'AssetViewedDS'[Category], 'AssetViewedDS'[CaseID], 'AssetViewedDS'[AssetViewReason.ViewReason], 'AssetViewedDS'[AssetViewReason.ViewDateTime], 'AssetViewedDS'[AssetViewReason.CMT_User_RecId], 'AssetViewedDS'[ViewerUserGroup], 'AssetViewedDS'[AssetViewReason.SourceIPAddress], FILTER(VALUES('AssetViewedDS'[Name]), (vAssetViewedDSName1ALL || IF(vAssetViewedDSName1 &lt;&gt; "", SEARCH(vAssetViewedDSName1, 'AssetViewedDS'[Name], 1, 0) &gt; 0, TRUE))))</Statement>
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>AssetViewedDSName</Name>
@@ -145,7 +200,7 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
         </rd:DesignerState>
         <CommandText>DEFINE VAR vAssetViewedDSName1 = IF(PATHLENGTH(@AssetViewedDSName) = 1, IF(@AssetViewedDSName &lt;&gt; "", @AssetViewedDSName, BLANK()), IF(PATHITEM(@AssetViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetViewedDSName, 2), BLANK()))
 VAR vAssetViewedDSName1ALL = PATHLENGTH(@AssetViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetViewedDSName, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'AssetViewedDS'[Users], 'AssetViewedDS'[Category], 'AssetViewedDS'[CaseID], FILTER(VALUES('AssetViewedDS'[Name]), (vAssetViewedDSName1ALL || IF(vAssetViewedDSName1 &lt;&gt; "", SEARCH(vAssetViewedDSName1, 'AssetViewedDS'[Name], 1, 0) &gt; 0, TRUE))))</CommandText>
+EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'AssetViewedDS'[Users], 'AssetViewedDS'[Category], 'AssetViewedDS'[CaseID], 'AssetViewedDS'[AssetViewReason.ViewReason], 'AssetViewedDS'[AssetViewReason.ViewDateTime], 'AssetViewedDS'[AssetViewReason.CMT_User_RecId], 'AssetViewedDS'[ViewerUserGroup], 'AssetViewedDS'[AssetViewReason.SourceIPAddress], FILTER(VALUES('AssetViewedDS'[Name]), (vAssetViewedDSName1ALL || IF(vAssetViewedDSName1 &lt;&gt; "", SEARCH(vAssetViewedDSName1, 'AssetViewedDS'[Name], 1, 0) &gt; 0, TRUE))))</CommandText>
       </Query>
       <Fields>
         <Field Name="Name">
@@ -167,6 +222,26 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
         <Field Name="CaseID">
           <rd:TypeName>System.String</rd:TypeName>
           <DataField>AssetViewedDS[CaseID]</DataField>
+        </Field>
+        <Field Name="AssetViewReason_ViewReason">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetViewedDS[AssetViewReason.ViewReason]</DataField>
+        </Field>
+        <Field Name="AssetViewReason_ViewDateTime">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetViewedDS[AssetViewReason.ViewDateTime]</DataField>
+        </Field>
+        <Field Name="AssetViewReason_CMT_User_RecId">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetViewedDS[AssetViewReason.CMT_User_RecId]</DataField>
+        </Field>
+        <Field Name="ViewerUserGroup">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetViewedDS[ViewerUserGroup]</DataField>
+        </Field>
+        <Field Name="AssetViewReason_SourceIPAddress">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetViewedDS[AssetViewReason.SourceIPAddress]</DataField>
         </Field>
       </Fields>
     </DataSet>
@@ -268,7 +343,7 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
                   <Width>63.52333mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>49.55332mm</Width>
+                  <Width>66.06329mm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>41.93333mm</Width>
@@ -280,7 +355,7 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
                   <Width>47.1783mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>36.00665mm</Width>
+                  <Width>61.83001mm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -932,6 +1007,7 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <rd:Selected>true</rd:Selected>
                         <Textbox Name="Unit_Name">
                           <rd:DefaultName>Unit_Name</rd:DefaultName>
                           <CanGrow>true</CanGrow>
@@ -1164,15 +1240,15 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox41">
-                          <rd:DefaultName>Textbox41</rd:DefaultName>
+                        <Textbox Name="AssetViewReason_ViewReason">
+                          <rd:DefaultName>AssetViewReason_ViewReason</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!AssetViewReason_ViewReason.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1222,15 +1298,15 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox43">
-                          <rd:DefaultName>Textbox43</rd:DefaultName>
+                        <Textbox Name="AssetViewReason_ViewDateTime">
+                          <rd:DefaultName>AssetViewReason_ViewDateTime</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!AssetViewReason_ViewDateTime.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1338,15 +1414,15 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox47">
-                          <rd:DefaultName>Textbox47</rd:DefaultName>
+                        <Textbox Name="ViewerUserGroup">
+                          <rd:DefaultName>ViewerUserGroup</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!ViewerUserGroup.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1396,15 +1472,15 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox49">
-                          <rd:DefaultName>Textbox49</rd:DefaultName>
+                        <Textbox Name="AssetViewReason_SourceIPAddress">
+                          <rd:DefaultName>AssetViewReason_SourceIPAddress</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!AssetViewReason_SourceIPAddress.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1486,7 +1562,7 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
             <Top>0mm</Top>
             <Left>0mm</Left>
             <Height>25.89666mm</Height>
-            <Width>538.03162mm</Width>
+            <Width>580.36493mm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1501,7 +1577,7 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
           </Border>
         </Style>
       </Body>
-      <Width>538.03162mm</Width>
+      <Width>580.36493mm</Width>
       <Page>
         <PageHeader>
           <Height>15.875mm</Height>
@@ -1546,7 +1622,7 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>17.07444mm</Height>
+          <Height>17.78mm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1564,7 +1640,7 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>0.56444mm</Top>
+              <Top>1.27mm</Top>
               <Left>0mm</Left>
               <Height>15.09889mm</Height>
               <Width>41.93333mm</Width>
@@ -1596,8 +1672,8 @@ EVALUATE SUMMARIZECOLUMNS('AssetViewedDS'[Name], 'AssetViewedDS'[Unit.Name], 'As
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.41111mm</Top>
-              <Left>487.23162mm</Left>
+              <Top>0mm</Top>
+              <Left>529.56493mm</Left>
               <Height>15.66333mm</Height>
               <Width>50.8mm</Width>
               <ZIndex>1</ZIndex>
