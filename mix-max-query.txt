@@ -1,0 +1,9 @@
+EVALUATE 
+VAR MinDate = CALCULATE(MIN('AssetViewDs'[AssetViewReason.ViewDateTime]))
+VAR MaxDate = CALCULATE(MAX('AssetViewDs'[AssetViewReason.ViewDateTime]))
+RETURN 
+ROW("MinDate", MinDate, "MaxDate", MaxDate)
+
+
+
+EVALUATE VALUES ('AssetNotViewedDS'[User.UserInfo.FName]) 
