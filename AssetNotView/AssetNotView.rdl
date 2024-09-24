@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1811.11</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-09-16T15:43:51.7347037Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-09-24T05:43:39.4785675Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -22,13 +22,238 @@
         <DataProvider>PBIDATASET</DataProvider>
         <ConnectString>Data Source=pbiazure://api.high.powerbigov.us/;Identity Provider="https://login.microsoftonline.us/common, https://high.analysis.usgovcloudapi.net/powerbi/api, f0b72488-7082-488a-a7e8-eada97bd842d";Initial Catalog=sobe_wowvirtualserver-02ff196b-b0ec-4608-a419-3928c1fb9a8f;Integrated Security=ClaimsToken</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>3a8468df-71a1-4059-b13d-84f8fc242d40</rd:DataSourceID>
+      <rd:DataSourceID>c370ca3a-5fe8-4c84-b562-256661c16114</rd:DataSourceID>
       <rd:PowerBIWorkspaceName>Testing_Workspace_DEV_ADIL</rd:PowerBIWorkspaceName>
       <rd:PowerBIDatasetName>DataSet_C_SQL</rd:PowerBIDatasetName>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="MinMaxDurationDateDs">
+    <DataSet Name="AssetNotViewedDs">
+      <Query>
+        <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="AssetNotViewedDSName">
+            <Value>=Parameters!AssetNotViewedDSName.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="FromAssetNotViewedDSCapturedOn">
+            <Value>=Format((Parameters!FromAssetNotViewedDSCapturedOn.Value), "yyyy-MM-dd")</Value>
+          </QueryParameter>
+          <QueryParameter Name="ToAssetNotViewedDSCapturedOn">
+            <Value>=Format((Parameters!ToAssetNotViewedDSCapturedOn.Value), "yyyy-MM-dd")</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:DesignerState>
+          <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
+            <CommandType>DAX</CommandType>
+            <QuerySpecification xsi:type="MDXQuerySpecification">
+              <Select>
+                <Items>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetNotViewedDS</DimensionName>
+                      <HierarchyName>Name</HierarchyName>
+                      <HierarchyUniqueName>[AssetNotViewedDS].[Name]</HierarchyUniqueName>
+                      <LevelName>Name</LevelName>
+                      <UniqueName>[AssetNotViewedDS].[Name].[Name]</UniqueName>
+                    </ID>
+                    <ItemCaption>Name</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetNotViewedDS</DimensionName>
+                      <HierarchyName>Unit.Name</HierarchyName>
+                      <HierarchyUniqueName>[AssetNotViewedDS].[Unit.Name]</HierarchyUniqueName>
+                      <LevelName>Unit.Name</LevelName>
+                      <UniqueName>[AssetNotViewedDS].[Unit.Name].[Unit.Name]</UniqueName>
+                    </ID>
+                    <ItemCaption>Unit.Name</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetNotViewedDS</DimensionName>
+                      <HierarchyName>Category</HierarchyName>
+                      <HierarchyUniqueName>[AssetNotViewedDS].[Category]</HierarchyUniqueName>
+                      <LevelName>Category</LevelName>
+                      <UniqueName>[AssetNotViewedDS].[Category].[Category]</UniqueName>
+                    </ID>
+                    <ItemCaption>Category</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetNotViewedDS</DimensionName>
+                      <HierarchyName>CaseID</HierarchyName>
+                      <HierarchyUniqueName>[AssetNotViewedDS].[CaseID]</HierarchyUniqueName>
+                      <LevelName>CaseID</LevelName>
+                      <UniqueName>[AssetNotViewedDS].[CaseID].[CaseID]</UniqueName>
+                    </ID>
+                    <ItemCaption>CaseID</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetNotViewedDS</DimensionName>
+                      <HierarchyName>CapturedOn</HierarchyName>
+                      <HierarchyUniqueName>[AssetNotViewedDS].[CapturedOn]</HierarchyUniqueName>
+                      <LevelName>CapturedOn</LevelName>
+                      <UniqueName>[AssetNotViewedDS].[CapturedOn].[CapturedOn]</UniqueName>
+                    </ID>
+                    <ItemCaption>CapturedOn</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                </Items>
+              </Select>
+              <AutoExecute>false</AutoExecute>
+              <From>Model</From>
+              <Filter>
+                <FilterItems>
+                  <FilterItem>
+                    <HierarchyUniqueName>[AssetNotViewedDS].[Name]</HierarchyUniqueName>
+                    <Condition xsi:type="Contains">
+                      <Basis>Caption</Basis>
+                      <Expression />
+                      <Parametrized>true</Parametrized>
+                    </Condition>
+                  </FilterItem>
+                  <FilterItem>
+                    <HierarchyUniqueName>[AssetNotViewedDS].[CapturedOn]</HierarchyUniqueName>
+                    <Condition xsi:type="Range">
+                      <Basis>Member</Basis>
+                      <From />
+                      <FromParametrized>true</FromParametrized>
+                      <To />
+                      <ToParametrized>true</ToParametrized>
+                    </Condition>
+                  </FilterItem>
+                </FilterItems>
+              </Filter>
+              <Calculations />
+              <Aggregates />
+              <QueryProperties>
+                <IncludeMemberValue>true</IncludeMemberValue>
+              </QueryProperties>
+            </QuerySpecification>
+            <Query>
+              <Statement>DEFINE VAR vAssetNotViewedDSName1 = IF(PATHLENGTH(@AssetNotViewedDSName) = 1, IF(@AssetNotViewedDSName &lt;&gt; "", @AssetNotViewedDSName, BLANK()), IF(PATHITEM(@AssetNotViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetNotViewedDSName, 2), BLANK()))
+VAR vAssetNotViewedDSName1ALL = PATHLENGTH(@AssetNotViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetNotViewedDSName, 1, 1) &lt; 1
+VAR vFromAssetNotViewedDSCapturedOn1 = IF(PATHLENGTH(@FromAssetNotViewedDSCapturedOn) = 1, IF(@FromAssetNotViewedDSCapturedOn &lt;&gt; "", @FromAssetNotViewedDSCapturedOn, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSCapturedOn, 2), BLANK()))
+VAR vFromAssetNotViewedDSCapturedOn1ALL = PATHLENGTH(@FromAssetNotViewedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSCapturedOn, 1, 1) &lt; 1
+VAR vToAssetNotViewedDSCapturedOn1 = IF(PATHLENGTH(@ToAssetNotViewedDSCapturedOn) = 1, IF(@ToAssetNotViewedDSCapturedOn &lt;&gt; "", @ToAssetNotViewedDSCapturedOn, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSCapturedOn, 2), BLANK()))
+VAR vToAssetNotViewedDSCapturedOn1ALL = PATHLENGTH(@ToAssetNotViewedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSCapturedOn, 1, 1) &lt; 1
+EVALUATE SUMMARIZECOLUMNS('AssetNotViewedDS'[Name], 'AssetNotViewedDS'[Unit.Name], 'AssetNotViewedDS'[Category], 'AssetNotViewedDS'[CaseID], 'AssetNotViewedDS'[CapturedOn], FILTER(VALUES('AssetNotViewedDS'[Name]), (vAssetNotViewedDSName1ALL || IF(vAssetNotViewedDSName1 &lt;&gt; "", SEARCH(vAssetNotViewedDSName1, 'AssetNotViewedDS'[Name], 1, 0) &gt; 0, TRUE))), FILTER(VALUES('AssetNotViewedDS'[CapturedOn]), (vFromAssetNotViewedDSCapturedOn1ALL || 'AssetNotViewedDS'[CapturedOn] &gt;= DATEVALUE(vFromAssetNotViewedDSCapturedOn1) + TIMEVALUE(vFromAssetNotViewedDSCapturedOn1)) &amp;&amp; (vToAssetNotViewedDSCapturedOn1ALL || 'AssetNotViewedDS'[CapturedOn] &lt;= DATEVALUE(vToAssetNotViewedDSCapturedOn1) + TIMEVALUE(vToAssetNotViewedDSCapturedOn1))))</Statement>
+              <ParameterDefinitions>
+                <ParameterDefinition>
+                  <Name>AssetNotViewedDSName</Name>
+                  <Usage>Contains</Usage>
+                  <DefaultValues>
+                    <DefaultValue />
+                  </DefaultValues>
+                  <Caption>Name</Caption>
+                  <ParameterValuesQuery>
+                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[Name], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[Name]", 'AssetNotViewedDS'[Name]) order by 'AssetNotViewedDS'[Name], [ParameterLevel]</Statement>
+                    <ParameterizedStatement>
+                      <ReferencedParameters />
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <AllowBlank>true</AllowBlank>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>FromAssetNotViewedDSCapturedOn</Name>
+                  <Usage>RangeFrom</Usage>
+                  <DbType>DateTime</DbType>
+                  <DefaultValues>
+                    <DefaultValue />
+                  </DefaultValues>
+                  <Caption>From CapturedOn</Caption>
+                  <HierarchyUniqueName>[AssetNotViewedDS].[CapturedOn]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>DEFINE VAR vAssetNotViewedDSName1 = IF(PATHLENGTH(@AssetNotViewedDSName) = 1, IF(@AssetNotViewedDSName &lt;&gt; "", @AssetNotViewedDSName, BLANK()), IF(PATHITEM(@AssetNotViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetNotViewedDSName, 2), BLANK()))
+VAR vAssetNotViewedDSName1ALL = PATHLENGTH(@AssetNotViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetNotViewedDSName, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[CapturedOn], "h0"), FILTER(VALUES('AssetNotViewedDS'[Name]), (vAssetNotViewedDSName1ALL || IF(vAssetNotViewedDSName1 &lt;&gt; "", SEARCH(vAssetNotViewedDSName1, 'AssetNotViewedDS'[Name], 1, 0) &gt; 0, TRUE)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[CapturedOn], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[CapturedOn], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[CapturedOn]", 'AssetNotViewedDS'[CapturedOn]) order by 'AssetNotViewedDS'[CapturedOn], [ParameterLevel]</Statement>
+                    <ParameterizedStatement>
+                      <Statement>DEFINE VAR vAssetNotViewedDSName1 = IF(PATHLENGTH(@AssetNotViewedDSName) = 1, IF(@AssetNotViewedDSName &lt;&gt; "", @AssetNotViewedDSName, BLANK()), IF(PATHITEM(@AssetNotViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetNotViewedDSName, 2), BLANK()))
+VAR vAssetNotViewedDSName1ALL = PATHLENGTH(@AssetNotViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetNotViewedDSName, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[CapturedOn], "h0"), FILTER(VALUES('AssetNotViewedDS'[Name]), (vAssetNotViewedDSName1ALL || IF(vAssetNotViewedDSName1 &lt;&gt; "", SEARCH(vAssetNotViewedDSName1, 'AssetNotViewedDS'[Name], 1, 0) &gt; 0, TRUE)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[CapturedOn], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[CapturedOn], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[CapturedOn]", 'AssetNotViewedDS'[CapturedOn]) order by 'AssetNotViewedDS'[CapturedOn], [ParameterLevel]</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>AssetNotViewedDSName</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <AllowBlank>true</AllowBlank>
+                </ParameterDefinition>
+                <ParameterDefinition>
+                  <Name>ToAssetNotViewedDSCapturedOn</Name>
+                  <Usage>RangeTo</Usage>
+                  <DbType>DateTime</DbType>
+                  <DefaultValues>
+                    <DefaultValue />
+                  </DefaultValues>
+                  <Caption>To CapturedOn</Caption>
+                  <HierarchyUniqueName>[AssetNotViewedDS].[CapturedOn]</HierarchyUniqueName>
+                  <ParameterValuesQuery>
+                    <Statement>DEFINE VAR vAssetNotViewedDSName1 = IF(PATHLENGTH(@AssetNotViewedDSName) = 1, IF(@AssetNotViewedDSName &lt;&gt; "", @AssetNotViewedDSName, BLANK()), IF(PATHITEM(@AssetNotViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetNotViewedDSName, 2), BLANK()))
+VAR vAssetNotViewedDSName1ALL = PATHLENGTH(@AssetNotViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetNotViewedDSName, 1, 1) &lt; 1
+VAR vFromAssetNotViewedDSCapturedOn1 = IF(PATHLENGTH(@FromAssetNotViewedDSCapturedOn) = 1, IF(@FromAssetNotViewedDSCapturedOn &lt;&gt; "", @FromAssetNotViewedDSCapturedOn, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSCapturedOn, 2), BLANK()))
+VAR vFromAssetNotViewedDSCapturedOn1ALL = PATHLENGTH(@FromAssetNotViewedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSCapturedOn, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[CapturedOn], "h0"), FILTER(VALUES('AssetNotViewedDS'[Name]), (vAssetNotViewedDSName1ALL || IF(vAssetNotViewedDSName1 &lt;&gt; "", SEARCH(vAssetNotViewedDSName1, 'AssetNotViewedDS'[Name], 1, 0) &gt; 0, TRUE))), FILTER(VALUES('AssetNotViewedDS'[CapturedOn]), (vFromAssetNotViewedDSCapturedOn1ALL || 'AssetNotViewedDS'[CapturedOn] &gt;= DATEVALUE(vFromAssetNotViewedDSCapturedOn1) + TIMEVALUE(vFromAssetNotViewedDSCapturedOn1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[CapturedOn], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[CapturedOn], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[CapturedOn]", 'AssetNotViewedDS'[CapturedOn]) order by 'AssetNotViewedDS'[CapturedOn], [ParameterLevel]</Statement>
+                    <ParameterizedStatement>
+                      <Statement>DEFINE VAR vAssetNotViewedDSName1 = IF(PATHLENGTH(@AssetNotViewedDSName) = 1, IF(@AssetNotViewedDSName &lt;&gt; "", @AssetNotViewedDSName, BLANK()), IF(PATHITEM(@AssetNotViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetNotViewedDSName, 2), BLANK()))
+VAR vAssetNotViewedDSName1ALL = PATHLENGTH(@AssetNotViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetNotViewedDSName, 1, 1) &lt; 1
+VAR vFromAssetNotViewedDSCapturedOn1 = IF(PATHLENGTH(@FromAssetNotViewedDSCapturedOn) = 1, IF(@FromAssetNotViewedDSCapturedOn &lt;&gt; "", @FromAssetNotViewedDSCapturedOn, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSCapturedOn, 2), BLANK()))
+VAR vFromAssetNotViewedDSCapturedOn1ALL = PATHLENGTH(@FromAssetNotViewedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSCapturedOn, 1, 1) &lt; 1
+EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[CapturedOn], "h0"), FILTER(VALUES('AssetNotViewedDS'[Name]), (vAssetNotViewedDSName1ALL || IF(vAssetNotViewedDSName1 &lt;&gt; "", SEARCH(vAssetNotViewedDSName1, 'AssetNotViewedDS'[Name], 1, 0) &gt; 0, TRUE))), FILTER(VALUES('AssetNotViewedDS'[CapturedOn]), (vFromAssetNotViewedDSCapturedOn1ALL || 'AssetNotViewedDS'[CapturedOn] &gt;= DATEVALUE(vFromAssetNotViewedDSCapturedOn1) + TIMEVALUE(vFromAssetNotViewedDSCapturedOn1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[CapturedOn], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[CapturedOn], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[CapturedOn]", 'AssetNotViewedDS'[CapturedOn]) order by 'AssetNotViewedDS'[CapturedOn], [ParameterLevel]</Statement>
+                      <ReferencedParameters>
+                        <ReferencedParameter>
+                          <Name>AssetNotViewedDSName</Name>
+                        </ReferencedParameter>
+                        <ReferencedParameter>
+                          <Name>FromAssetNotViewedDSCapturedOn</Name>
+                        </ReferencedParameter>
+                      </ReferencedParameters>
+                    </ParameterizedStatement>
+                  </ParameterValuesQuery>
+                  <AllowBlank>true</AllowBlank>
+                </ParameterDefinition>
+              </ParameterDefinitions>
+            </Query>
+          </QueryDefinition>
+        </rd:DesignerState>
+        <CommandText>DEFINE VAR vAssetNotViewedDSName1 = IF(PATHLENGTH(@AssetNotViewedDSName) = 1, IF(@AssetNotViewedDSName &lt;&gt; "", @AssetNotViewedDSName, BLANK()), IF(PATHITEM(@AssetNotViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetNotViewedDSName, 2), BLANK()))
+VAR vAssetNotViewedDSName1ALL = PATHLENGTH(@AssetNotViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetNotViewedDSName, 1, 1) &lt; 1
+VAR vFromAssetNotViewedDSCapturedOn1 = IF(PATHLENGTH(@FromAssetNotViewedDSCapturedOn) = 1, IF(@FromAssetNotViewedDSCapturedOn &lt;&gt; "", @FromAssetNotViewedDSCapturedOn, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSCapturedOn, 2), BLANK()))
+VAR vFromAssetNotViewedDSCapturedOn1ALL = PATHLENGTH(@FromAssetNotViewedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSCapturedOn, 1, 1) &lt; 1
+VAR vToAssetNotViewedDSCapturedOn1 = IF(PATHLENGTH(@ToAssetNotViewedDSCapturedOn) = 1, IF(@ToAssetNotViewedDSCapturedOn &lt;&gt; "", @ToAssetNotViewedDSCapturedOn, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSCapturedOn, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSCapturedOn, 2), BLANK()))
+VAR vToAssetNotViewedDSCapturedOn1ALL = PATHLENGTH(@ToAssetNotViewedDSCapturedOn) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSCapturedOn, 1, 1) &lt; 1
+EVALUATE SUMMARIZECOLUMNS('AssetNotViewedDS'[Name], 'AssetNotViewedDS'[Unit.Name], 'AssetNotViewedDS'[Category], 'AssetNotViewedDS'[CaseID], 'AssetNotViewedDS'[CapturedOn], FILTER(VALUES('AssetNotViewedDS'[Name]), (vAssetNotViewedDSName1ALL || IF(vAssetNotViewedDSName1 &lt;&gt; "", SEARCH(vAssetNotViewedDSName1, 'AssetNotViewedDS'[Name], 1, 0) &gt; 0, TRUE))), FILTER(VALUES('AssetNotViewedDS'[CapturedOn]), (vFromAssetNotViewedDSCapturedOn1ALL || 'AssetNotViewedDS'[CapturedOn] &gt;= DATEVALUE(vFromAssetNotViewedDSCapturedOn1) + TIMEVALUE(vFromAssetNotViewedDSCapturedOn1)) &amp;&amp; (vToAssetNotViewedDSCapturedOn1ALL || 'AssetNotViewedDS'[CapturedOn] &lt;= DATEVALUE(vToAssetNotViewedDSCapturedOn1) + TIMEVALUE(vToAssetNotViewedDSCapturedOn1))))</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Name">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetNotViewedDS[Name]</DataField>
+        </Field>
+        <Field Name="Unit_Name">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetNotViewedDS[Unit.Name]</DataField>
+        </Field>
+        <Field Name="Category">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetNotViewedDS[Category]</DataField>
+        </Field>
+        <Field Name="CaseID">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetNotViewedDS[CaseID]</DataField>
+        </Field>
+        <Field Name="CapturedOn">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetNotViewedDS[CapturedOn]</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="MinMaxCapturedOn">
       <Query>
         <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
         <rd:DesignerState>
@@ -63,417 +288,29 @@
             </QuerySpecification>
             <Query>
               <Statement>EVALUATE 
-VAR MinDate = CALCULATE(MIN('AssetNotViewedDS'[AssetAV.RecordingEnded]))
-VAR MaxDate = CALCULATE(MAX('AssetNotViewedDS'[AssetAV.RecordingEnded]))
+VAR MinDate = CALCULATE(MIN('AssetNotViewedDS'[CapturedOn]))
+VAR MaxDate = CALCULATE(MAX('AssetNotViewedDS'[CapturedOn]))
 RETURN 
-ROW("MinDate", MinDate, "MaxDate", MaxDate)</Statement>
+ROW("MinDate", MinDate, "MaxDate", MaxDate)
+</Statement>
               <ParameterDefinitions />
             </Query>
           </QueryDefinition>
         </rd:DesignerState>
         <CommandText>EVALUATE 
-VAR MinDate = CALCULATE(MIN('AssetNotViewedDS'[AssetAV.RecordingEnded]))
-VAR MaxDate = CALCULATE(MAX('AssetNotViewedDS'[AssetAV.RecordingEnded]))
+VAR MinDate = CALCULATE(MIN('AssetNotViewedDS'[CapturedOn]))
+VAR MaxDate = CALCULATE(MAX('AssetNotViewedDS'[CapturedOn]))
 RETURN 
 ROW("MinDate", MinDate, "MaxDate", MaxDate)</CommandText>
       </Query>
       <Fields>
         <Field Name="MinDate">
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.DateTime</rd:TypeName>
           <DataField>[MinDate]</DataField>
         </Field>
         <Field Name="MaxDate">
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.DateTime</rd:TypeName>
           <DataField>[MaxDate]</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="AssetNotViewedDS">
-      <Query>
-        <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="FromAssetNotViewedDSAssetAVRecordingStarted">
-            <Value>=Format((Parameters!FromAssetNotViewedDSAssetAVRecordingStarted.Value), "yyyy-MM-dd")</Value>
-          </QueryParameter>
-          <QueryParameter Name="ToAssetNotViewedDSAssetAVRecordingStarted">
-            <Value>=Format((Parameters!ToAssetNotViewedDSAssetAVRecordingStarted.Value), "yyyy-MM-dd")</Value>
-          </QueryParameter>
-          <QueryParameter Name="AssetNotViewedDSName">
-            <Value>=Parameters!AssetNotViewedDSName.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <rd:DesignerState>
-          <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
-            <CommandType>DAX</CommandType>
-            <QuerySpecification xsi:type="MDXQuerySpecification">
-              <Select>
-                <Items>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>AssetNotViewedDS</DimensionName>
-                      <HierarchyName>Name</HierarchyName>
-                      <HierarchyUniqueName>[AssetNotViewedDS].[Name]</HierarchyUniqueName>
-                      <LevelName>Name</LevelName>
-                      <UniqueName>[AssetNotViewedDS].[Name].[Name]</UniqueName>
-                    </ID>
-                    <ItemCaption>Name</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>AssetNotViewedDS</DimensionName>
-                      <HierarchyName>Unit.Name</HierarchyName>
-                      <HierarchyUniqueName>[AssetNotViewedDS].[Unit.Name]</HierarchyUniqueName>
-                      <LevelName>Unit.Name</LevelName>
-                      <UniqueName>[AssetNotViewedDS].[Unit.Name].[Unit.Name]</UniqueName>
-                    </ID>
-                    <ItemCaption>Unit.Name</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>AssetNotViewedDS</DimensionName>
-                      <HierarchyName>User.UserInfo.FName</HierarchyName>
-                      <HierarchyUniqueName>[AssetNotViewedDS].[User.UserInfo.FName]</HierarchyUniqueName>
-                      <LevelName>User.UserInfo.FName</LevelName>
-                      <UniqueName>[AssetNotViewedDS].[User.UserInfo.FName].[User.UserInfo.FName]</UniqueName>
-                    </ID>
-                    <ItemCaption>User.UserInfo.FName</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>AssetNotViewedDS</DimensionName>
-                      <HierarchyName>User.UserInfo.LName</HierarchyName>
-                      <HierarchyUniqueName>[AssetNotViewedDS].[User.UserInfo.LName]</HierarchyUniqueName>
-                      <LevelName>User.UserInfo.LName</LevelName>
-                      <UniqueName>[AssetNotViewedDS].[User.UserInfo.LName].[User.UserInfo.LName]</UniqueName>
-                    </ID>
-                    <ItemCaption>User.UserInfo.LName</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>AssetNotViewedDS</DimensionName>
-                      <HierarchyName>AssetAV.RecordingStarted</HierarchyName>
-                      <HierarchyUniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
-                      <LevelName>AssetAV.RecordingStarted</LevelName>
-                      <UniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted].[AssetAV.RecordingStarted]</UniqueName>
-                    </ID>
-                    <ItemCaption>AssetAV.RecordingStarted</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>AssetNotViewedDS</DimensionName>
-                      <HierarchyName>Category.Name</HierarchyName>
-                      <HierarchyUniqueName>[AssetNotViewedDS].[Category.Name]</HierarchyUniqueName>
-                      <LevelName>Category.Name</LevelName>
-                      <UniqueName>[AssetNotViewedDS].[Category.Name].[Category.Name]</UniqueName>
-                    </ID>
-                    <ItemCaption>Category.Name</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Level">
-                      <DimensionName>AssetNotViewedDS</DimensionName>
-                      <HierarchyName>EvidenceRelations.1.ValueDisplayName</HierarchyName>
-                      <HierarchyUniqueName>[AssetNotViewedDS].[EvidenceRelations.1.ValueDisplayName]</HierarchyUniqueName>
-                      <LevelName>EvidenceRelations.1.ValueDisplayName</LevelName>
-                      <UniqueName>[AssetNotViewedDS].[EvidenceRelations.1.ValueDisplayName].[EvidenceRelations.1.ValueDisplayName]</UniqueName>
-                    </ID>
-                    <ItemCaption>EvidenceRelations.1.ValueDisplayName</ItemCaption>
-                    <UniqueName>true</UniqueName>
-                  </Item>
-                </Items>
-              </Select>
-              <AutoExecute>false</AutoExecute>
-              <From>Model</From>
-              <Filter>
-                <FilterItems>
-                  <FilterItem>
-                    <HierarchyUniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
-                    <Condition xsi:type="Range">
-                      <Basis>Member</Basis>
-                      <From />
-                      <FromParametrized>true</FromParametrized>
-                      <To />
-                      <ToParametrized>true</ToParametrized>
-                    </Condition>
-                  </FilterItem>
-                  <FilterItem>
-                    <HierarchyUniqueName>[AssetNotViewedDS].[Name]</HierarchyUniqueName>
-                    <Condition xsi:type="Contains">
-                      <Basis>Caption</Basis>
-                      <Expression />
-                      <Parametrized>true</Parametrized>
-                    </Condition>
-                  </FilterItem>
-                </FilterItems>
-              </Filter>
-              <Calculations />
-              <Aggregates />
-              <QueryProperties>
-                <IncludeMemberValue>true</IncludeMemberValue>
-              </QueryProperties>
-            </QuerySpecification>
-            <Query>
-              <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-VAR vToAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@ToAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @ToAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vToAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-VAR vAssetNotViewedDSName1 = IF(PATHLENGTH(@AssetNotViewedDSName) = 1, IF(@AssetNotViewedDSName &lt;&gt; "", @AssetNotViewedDSName, BLANK()), IF(PATHITEM(@AssetNotViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetNotViewedDSName, 2), BLANK()))
-VAR vAssetNotViewedDSName1ALL = PATHLENGTH(@AssetNotViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetNotViewedDSName, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('AssetNotViewedDS'[Name], 'AssetNotViewedDS'[Unit.Name], 'AssetNotViewedDS'[User.UserInfo.FName], 'AssetNotViewedDS'[User.UserInfo.LName], 'AssetNotViewedDS'[AssetAV.RecordingStarted], 'AssetNotViewedDS'[Category.Name], 'AssetNotViewedDS'[EvidenceRelations.1.ValueDisplayName], FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)) &amp;&amp; (vToAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &lt;= DATEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1))), FILTER(VALUES('AssetNotViewedDS'[Name]), (vAssetNotViewedDSName1ALL || IF(vAssetNotViewedDSName1 &lt;&gt; "", SEARCH(vAssetNotViewedDSName1, 'AssetNotViewedDS'[Name], 1, 0) &gt; 0, TRUE))))</Statement>
-              <ParameterDefinitions>
-                <ParameterDefinition>
-                  <Name>FromAssetNotViewedDSAssetAVRecordingStarted</Name>
-                  <Usage>RangeFrom</Usage>
-                  <DbType>DateTime</DbType>
-                  <DefaultValues>
-                    <DefaultValue />
-                  </DefaultValues>
-                  <Caption>From AssetAV.RecordingStarted</Caption>
-                  <HierarchyUniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[AssetAV.RecordingStarted], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[AssetAV.RecordingStarted], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[AssetAV.RecordingStarted], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[AssetAV.RecordingStarted]", 'AssetNotViewedDS'[AssetAV.RecordingStarted]) order by 'AssetNotViewedDS'[AssetAV.RecordingStarted], [ParameterLevel]</Statement>
-                    <ParameterizedStatement>
-                      <ReferencedParameters />
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <AllowBlank>true</AllowBlank>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>ToAssetNotViewedDSAssetAVRecordingStarted</Name>
-                  <Usage>RangeTo</Usage>
-                  <DbType>DateTime</DbType>
-                  <DefaultValues>
-                    <DefaultValue />
-                  </DefaultValues>
-                  <Caption>To AssetAV.RecordingStarted</Caption>
-                  <HierarchyUniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[AssetAV.RecordingStarted], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[AssetAV.RecordingStarted], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[AssetAV.RecordingStarted], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[AssetAV.RecordingStarted]", 'AssetNotViewedDS'[AssetAV.RecordingStarted]) order by 'AssetNotViewedDS'[AssetAV.RecordingStarted], [ParameterLevel]</Statement>
-                    <ParameterizedStatement>
-                      <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[AssetAV.RecordingStarted], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[AssetAV.RecordingStarted], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[AssetAV.RecordingStarted], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[AssetAV.RecordingStarted]", 'AssetNotViewedDS'[AssetAV.RecordingStarted]) order by 'AssetNotViewedDS'[AssetAV.RecordingStarted], [ParameterLevel]</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>FromAssetNotViewedDSAssetAVRecordingStarted</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <AllowBlank>true</AllowBlank>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>AssetNotViewedDSName</Name>
-                  <Usage>Contains</Usage>
-                  <DefaultValues>
-                    <DefaultValue />
-                  </DefaultValues>
-                  <Caption>Name</Caption>
-                  <ParameterValuesQuery>
-                    <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-VAR vToAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@ToAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @ToAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vToAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[Name], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)) &amp;&amp; (vToAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &lt;= DATEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[Name]", 'AssetNotViewedDS'[Name]) order by 'AssetNotViewedDS'[Name], [ParameterLevel]</Statement>
-                    <ParameterizedStatement>
-                      <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-VAR vToAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@ToAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @ToAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vToAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[Name], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)) &amp;&amp; (vToAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &lt;= DATEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[Name]", 'AssetNotViewedDS'[Name]) order by 'AssetNotViewedDS'[Name], [ParameterLevel]</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>FromAssetNotViewedDSAssetAVRecordingStarted</Name>
-                        </ReferencedParameter>
-                        <ReferencedParameter>
-                          <Name>ToAssetNotViewedDSAssetAVRecordingStarted</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <AllowBlank>true</AllowBlank>
-                </ParameterDefinition>
-              </ParameterDefinitions>
-            </Query>
-          </QueryDefinition>
-        </rd:DesignerState>
-        <CommandText>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-VAR vToAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@ToAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @ToAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vToAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-VAR vAssetNotViewedDSName1 = IF(PATHLENGTH(@AssetNotViewedDSName) = 1, IF(@AssetNotViewedDSName &lt;&gt; "", @AssetNotViewedDSName, BLANK()), IF(PATHITEM(@AssetNotViewedDSName, 2) &lt;&gt; "", PATHITEM(@AssetNotViewedDSName, 2), BLANK()))
-VAR vAssetNotViewedDSName1ALL = PATHLENGTH(@AssetNotViewedDSName) &gt; 1 &amp;&amp; PATHITEM(@AssetNotViewedDSName, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('AssetNotViewedDS'[Name], 'AssetNotViewedDS'[Unit.Name], 'AssetNotViewedDS'[User.UserInfo.FName], 'AssetNotViewedDS'[User.UserInfo.LName], 'AssetNotViewedDS'[AssetAV.RecordingStarted], 'AssetNotViewedDS'[Category.Name], 'AssetNotViewedDS'[EvidenceRelations.1.ValueDisplayName], FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)) &amp;&amp; (vToAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &lt;= DATEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1))), FILTER(VALUES('AssetNotViewedDS'[Name]), (vAssetNotViewedDSName1ALL || IF(vAssetNotViewedDSName1 &lt;&gt; "", SEARCH(vAssetNotViewedDSName1, 'AssetNotViewedDS'[Name], 1, 0) &gt; 0, TRUE))))</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="Name">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetNotViewedDS[Name]</DataField>
-        </Field>
-        <Field Name="Unit_Name">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetNotViewedDS[Unit.Name]</DataField>
-        </Field>
-        <Field Name="User_UserInfo_FName">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetNotViewedDS[User.UserInfo.FName]</DataField>
-        </Field>
-        <Field Name="User_UserInfo_LName">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetNotViewedDS[User.UserInfo.LName]</DataField>
-        </Field>
-        <Field Name="AssetAV_RecordingStarted">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetNotViewedDS[AssetAV.RecordingStarted]</DataField>
-        </Field>
-        <Field Name="Category_Name">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetNotViewedDS[Category.Name]</DataField>
-        </Field>
-        <Field Name="EvidenceRelations_1_ValueDisplayName">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>AssetNotViewedDS[EvidenceRelations.1.ValueDisplayName]</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-    <DataSet Name="AssetNotViewedDSName">
-      <Query>
-        <DataSourceName>Testing_Workspace_DEV_ADIL_DataSet_C_SQL</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name="FromAssetNotViewedDSAssetAVRecordingStarted">
-            <Value>=Format((Parameters!FromAssetNotViewedDSAssetAVRecordingStarted.Value), "yyyy-MM-dd")</Value>
-          </QueryParameter>
-          <QueryParameter Name="ToAssetNotViewedDSAssetAVRecordingStarted">
-            <Value>=Format((Parameters!ToAssetNotViewedDSAssetAVRecordingStarted.Value), "yyyy-MM-dd")</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <rd:DesignerState>
-          <QueryDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/AnalysisServices/QueryDefinition">
-            <CommandType>DAX</CommandType>
-            <Type>Query</Type>
-            <QuerySpecification xsi:type="MDXQuerySpecification">
-              <Select>
-                <Items>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterCaption</MeasureName>
-                      <UniqueName>[Measures].[ParameterCaption]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterCaption</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterValue</MeasureName>
-                      <UniqueName>[Measures].[ParameterValue]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterValue</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                  <Item>
-                    <ID xsi:type="Measure">
-                      <MeasureName>ParameterLevel</MeasureName>
-                      <UniqueName>[Measures].[ParameterLevel]</UniqueName>
-                    </ID>
-                    <ItemCaption>ParameterLevel</ItemCaption>
-                    <FormattedValue>true</FormattedValue>
-                  </Item>
-                </Items>
-              </Select>
-              <AutoExecute>false</AutoExecute>
-              <From>Model</From>
-              <Filter>
-                <FilterItems />
-              </Filter>
-              <Calculations />
-              <Aggregates />
-              <QueryProperties />
-            </QuerySpecification>
-            <Query>
-              <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-VAR vToAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@ToAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @ToAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vToAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[Name], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)) &amp;&amp; (vToAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &lt;= DATEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[Name]", 'AssetNotViewedDS'[Name]) order by 'AssetNotViewedDS'[Name], [ParameterLevel]</Statement>
-              <ParameterDefinitions>
-                <ParameterDefinition>
-                  <Name>FromAssetNotViewedDSAssetAVRecordingStarted</Name>
-                  <Usage>RangeFrom</Usage>
-                  <DbType>DateTime</DbType>
-                  <DefaultValues>
-                    <DefaultValue />
-                  </DefaultValues>
-                  <Caption>From AssetAV.RecordingStarted</Caption>
-                  <HierarchyUniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[AssetAV.RecordingStarted], "h0")), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[AssetAV.RecordingStarted], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[AssetAV.RecordingStarted], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[AssetAV.RecordingStarted]", 'AssetNotViewedDS'[AssetAV.RecordingStarted]) order by 'AssetNotViewedDS'[AssetAV.RecordingStarted], [ParameterLevel]</Statement>
-                    <ParameterizedStatement>
-                      <ReferencedParameters />
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <AllowBlank>true</AllowBlank>
-                </ParameterDefinition>
-                <ParameterDefinition>
-                  <Name>ToAssetNotViewedDSAssetAVRecordingStarted</Name>
-                  <Usage>RangeTo</Usage>
-                  <DbType>DateTime</DbType>
-                  <DefaultValues>
-                    <DefaultValue />
-                  </DefaultValues>
-                  <Caption>To AssetAV.RecordingStarted</Caption>
-                  <HierarchyUniqueName>[AssetNotViewedDS].[AssetAV.RecordingStarted]</HierarchyUniqueName>
-                  <ParameterValuesQuery>
-                    <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[AssetAV.RecordingStarted], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[AssetAV.RecordingStarted], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[AssetAV.RecordingStarted], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[AssetAV.RecordingStarted]", 'AssetNotViewedDS'[AssetAV.RecordingStarted]) order by 'AssetNotViewedDS'[AssetAV.RecordingStarted], [ParameterLevel]</Statement>
-                    <ParameterizedStatement>
-                      <Statement>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[AssetAV.RecordingStarted], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[AssetAV.RecordingStarted], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[AssetAV.RecordingStarted], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[AssetAV.RecordingStarted]", 'AssetNotViewedDS'[AssetAV.RecordingStarted]) order by 'AssetNotViewedDS'[AssetAV.RecordingStarted], [ParameterLevel]</Statement>
-                      <ReferencedParameters>
-                        <ReferencedParameter>
-                          <Name>FromAssetNotViewedDSAssetAVRecordingStarted</Name>
-                        </ReferencedParameter>
-                      </ReferencedParameters>
-                    </ParameterizedStatement>
-                  </ParameterValuesQuery>
-                  <AllowBlank>true</AllowBlank>
-                </ParameterDefinition>
-              </ParameterDefinitions>
-            </Query>
-          </QueryDefinition>
-        </rd:DesignerState>
-        <rd:AutoGenerated>true</rd:AutoGenerated>
-        <rd:Hidden>true</rd:Hidden>
-        <CommandText>DEFINE VAR vFromAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@FromAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @FromAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vFromAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@FromAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@FromAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-VAR vToAssetNotViewedDSAssetAVRecordingStarted1 = IF(PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) = 1, IF(@ToAssetNotViewedDSAssetAVRecordingStarted &lt;&gt; "", @ToAssetNotViewedDSAssetAVRecordingStarted, BLANK()), IF(PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2) &lt;&gt; "", PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 2), BLANK()))
-VAR vToAssetNotViewedDSAssetAVRecordingStarted1ALL = PATHLENGTH(@ToAssetNotViewedDSAssetAVRecordingStarted) &gt; 1 &amp;&amp; PATHITEM(@ToAssetNotViewedDSAssetAVRecordingStarted, 1, 1) &lt; 1
-EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('AssetNotViewedDS'[Name], "h0"), FILTER(VALUES('AssetNotViewedDS'[AssetAV.RecordingStarted]), (vFromAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &gt;= DATEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vFromAssetNotViewedDSAssetAVRecordingStarted1)) &amp;&amp; (vToAssetNotViewedDSAssetAVRecordingStarted1ALL || 'AssetNotViewedDS'[AssetAV.RecordingStarted] &lt;= DATEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1) + TIMEVALUE(vToAssetNotViewedDSAssetAVRecordingStarted1)))), "ParameterLevel", if ([h0], 0, 1)), "ParameterCaption", SWITCH([ParameterLevel], 1, 'AssetNotViewedDS'[Name], "All"), "ParameterValue", [ParameterLevel] &amp; "|" &amp; 'AssetNotViewedDS'[Name], "ParameterLevel", [ParameterLevel], "'AssetNotViewedDS'[Name]", 'AssetNotViewedDS'[Name]) order by 'AssetNotViewedDS'[Name], [ParameterLevel]</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="ParameterCaption">
-          <rd:TypeName>System.Int32</rd:TypeName>
-          <DataField>[ParameterCaption]</DataField>
-        </Field>
-        <Field Name="ParameterValue">
-          <rd:TypeName>System.Int32</rd:TypeName>
-          <DataField>[ParameterValue]</DataField>
-        </Field>
-        <Field Name="ParameterLevel">
-          <rd:TypeName>System.Int32</rd:TypeName>
-          <DataField>[ParameterLevel]</DataField>
-        </Field>
-        <Field Name="ParameterCaptionIndented">
-          <rd:TypeName>System.String</rd:TypeName>
-          <Value>=Space(3*Fields!ParameterLevel.Value) + Fields!ParameterCaption.Value</Value>
         </Field>
       </Fields>
     </DataSet>
@@ -486,30 +323,27 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>61.19499mm</Width>
+                  <Width>41.21366mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>55.05666mm</Width>
+                  <Width>41.21366mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>50.18833mm</Width>
+                  <Width>41.21366mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>31.985mm</Width>
+                  <Width>41.21366mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>47.50722mm</Width>
+                  <Width>34.94834mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>47.225mm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>44.05mm</Width>
+                  <Width>41.21366mm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>10.23333mm</Height>
+                  <Height>9.59833mm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -521,7 +355,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Asset Name</Value>
+                                  <Value>Name</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontSize>14pt</FontSize>
@@ -579,7 +413,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Unit</Value>
+                                  <Value>Unit Name</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontSize>14pt</FontSize>
@@ -637,64 +471,6 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>User</Value>
-                                  <Style>
-                                    <FontStyle>Italic</FontStyle>
-                                    <FontSize>14pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Color>#666666</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <Style>
-                            <Border>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox1">
-                          <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
                                   <Value>Category</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
@@ -745,8 +521,8 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox6">
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
+                        <Textbox Name="Textbox7">
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -803,8 +579,8 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox8">
-                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                        <Textbox Name="Textbox11">
+                          <rd:DefaultName>Textbox11</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -920,7 +696,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>8.32833mm</Height>
+                  <Height>6.21167mm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1040,15 +816,15 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="User_UserInfo_FName">
-                          <rd:DefaultName>User_UserInfo_FName</rd:DefaultName>
+                        <Textbox Name="Category">
+                          <rd:DefaultName>Category</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!User_UserInfo_FName.Value &amp; " " &amp; Fields!User_UserInfo_LName.Value</Value>
+                                  <Value>=Fields!Category.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1098,15 +874,15 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Category_Name">
-                          <rd:DefaultName>Category_Name</rd:DefaultName>
+                        <Textbox Name="CaseID">
+                          <rd:DefaultName>CaseID</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Category_Name.Value</Value>
+                                  <Value>=Fields!CaseID.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1156,66 +932,8 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="EvidenceRelations_1_ValueDisplayName">
-                          <rd:DefaultName>EvidenceRelations_1_ValueDisplayName</rd:DefaultName>
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!EvidenceRelations_1_ValueDisplayName.Value</Value>
-                                  <Style>
-                                    <FontFamily>Arial</FontFamily>
-                                    <FontSize>12pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
-                                    <Color>#333333</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <Style>
-                            <Border>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <BackgroundColor>White</BackgroundColor>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox10">
-                          <rd:DefaultName>Textbox10</rd:DefaultName>
+                        <Textbox Name="Textbox12">
+                          <rd:DefaultName>Textbox12</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1272,15 +990,15 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="AssetAV_RecordingStarted">
-                          <rd:DefaultName>AssetAV_RecordingStarted</rd:DefaultName>
+                        <Textbox Name="CapturedOn">
+                          <rd:DefaultName>CapturedOn</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AssetAV_RecordingStarted.Value</Value>
+                                  <Value>=Fields!CapturedOn.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1340,7 +1058,6 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -1355,11 +1072,11 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>AssetNotViewedDS</DataSetName>
+            <DataSetName>AssetNotViewedDs</DataSetName>
             <Top>0mm</Top>
             <Left>0mm</Left>
-            <Height>18.56166mm</Height>
-            <Width>337.2072mm</Width>
+            <Height>15.81mm</Height>
+            <Width>241.01666mm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1367,14 +1084,14 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>19.40277mm</Height>
+        <Height>41.20445mm</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>337.2072mm</Width>
+      <Width>241.01666mm</Width>
       <Page>
         <PageHeader>
           <Height>15.875mm</Height>
@@ -1400,7 +1117,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
               <Top>0mm</Top>
               <Left>0mm</Left>
               <Height>15.16944mm</Height>
-              <Width>75.16501mm</Width>
+              <Width>89.34667mm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1439,7 +1156,7 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.70556mm</Top>
+              <Top>0.35278mm</Top>
               <Left>0mm</Left>
               <Height>15.09889mm</Height>
               <Width>37.06499mm</Width>
@@ -1471,8 +1188,8 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.35278mm</Top>
-              <Left>286.4072mm</Left>
+              <Top>0mm</Top>
+              <Left>190.21666mm</Left>
               <Height>15.09889mm</Height>
               <Width>50.8mm</Width>
               <ZIndex>1</ZIndex>
@@ -1506,32 +1223,6 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="FromAssetNotViewedDSAssetAVRecordingStarted">
-      <DataType>DateTime</DataType>
-      <DefaultValue>
-        <DataSetReference>
-          <DataSetName>MinMaxDurationDateDs</DataSetName>
-          <ValueField>MinDate</ValueField>
-        </DataSetReference>
-      </DefaultValue>
-      <Prompt>From Captured On</Prompt>
-      <cl:ComponentMetadata>
-        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
-      </cl:ComponentMetadata>
-    </ReportParameter>
-    <ReportParameter Name="ToAssetNotViewedDSAssetAVRecordingStarted">
-      <DataType>DateTime</DataType>
-      <DefaultValue>
-        <DataSetReference>
-          <DataSetName>MinMaxDurationDateDs</DataSetName>
-          <ValueField>MaxDate</ValueField>
-        </DataSetReference>
-      </DefaultValue>
-      <Prompt>To Captured On</Prompt>
-      <cl:ComponentMetadata>
-        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
-      </cl:ComponentMetadata>
-    </ReportParameter>
     <ReportParameter Name="AssetNotViewedDSName">
       <DataType>String</DataType>
       <DefaultValue>
@@ -1540,7 +1231,33 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
         </Values>
       </DefaultValue>
       <AllowBlank>true</AllowBlank>
-      <Prompt>Asset Name</Prompt>
+      <Prompt>Name</Prompt>
+      <cl:ComponentMetadata>
+        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
+      </cl:ComponentMetadata>
+    </ReportParameter>
+    <ReportParameter Name="FromAssetNotViewedDSCapturedOn">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>MinMaxCapturedOn</DataSetName>
+          <ValueField>MinDate</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>From CapturedOn</Prompt>
+      <cl:ComponentMetadata>
+        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
+      </cl:ComponentMetadata>
+    </ReportParameter>
+    <ReportParameter Name="ToAssetNotViewedDSCapturedOn">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>MinMaxCapturedOn</DataSetName>
+          <ValueField>MaxDate</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>To CapturedOn</Prompt>
       <cl:ComponentMetadata>
         <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
       </cl:ComponentMetadata>
@@ -1554,17 +1271,17 @@ EVALUATE SELECTCOLUMNS (ADDCOLUMNS (SUMMARIZECOLUMNS (ROLLUPADDISSUBTOTAL ('Asse
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>FromAssetNotViewedDSAssetAVRecordingStarted</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>ToAssetNotViewedDSAssetAVRecordingStarted</ParameterName>
+          <ParameterName>AssetNotViewedDSName</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>AssetNotViewedDSName</ParameterName>
+          <ParameterName>FromAssetNotViewedDSCapturedOn</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>ToAssetNotViewedDSCapturedOn</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
