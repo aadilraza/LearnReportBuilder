@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1811.11</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-09-20T13:49:05.5137373Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-09-24T06:17:21.7546941Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -108,6 +108,17 @@
                     <ItemCaption>Recipients</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>AssetSharingDS</DimensionName>
+                      <HierarchyName>GroupedData.User.UserInfo.Email</HierarchyName>
+                      <HierarchyUniqueName>[AssetSharingDS].[GroupedData.User.UserInfo.Email]</HierarchyUniqueName>
+                      <LevelName>GroupedData.User.UserInfo.Email</LevelName>
+                      <UniqueName>[AssetSharingDS].[GroupedData.User.UserInfo.Email].[GroupedData.User.UserInfo.Email]</UniqueName>
+                    </ID>
+                    <ItemCaption>GroupedData.User.UserInfo.Email</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
                 </Items>
               </Select>
               <AutoExecute>false</AutoExecute>
@@ -133,7 +144,7 @@
             <Query>
               <Statement>DEFINE VAR vAssetSharingDSRequestTrackingDetailReferenceTitle1 = IF(PATHLENGTH(@AssetSharingDSRequestTrackingDetailReferenceTitle) = 1, IF(@AssetSharingDSRequestTrackingDetailReferenceTitle &lt;&gt; "", @AssetSharingDSRequestTrackingDetailReferenceTitle, BLANK()), IF(PATHITEM(@AssetSharingDSRequestTrackingDetailReferenceTitle, 2) &lt;&gt; "", PATHITEM(@AssetSharingDSRequestTrackingDetailReferenceTitle, 2), BLANK()))
 VAR vAssetSharingDSRequestTrackingDetailReferenceTitle1ALL = PATHLENGTH(@AssetSharingDSRequestTrackingDetailReferenceTitle) &gt; 1 &amp;&amp; PATHITEM(@AssetSharingDSRequestTrackingDetailReferenceTitle, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('AssetSharingDS'[ShareType.ShareTypeName], 'AssetSharingDS'[SharedOn], 'AssetSharingDS'[TrackingStatus.StatusName], 'AssetSharingDS'[TimeRemaining], 'AssetSharingDS'[RequestTrackingDetail.ReferenceTitle], 'AssetSharingDS'[Recipients], FILTER(VALUES('AssetSharingDS'[RequestTrackingDetail.ReferenceTitle]), (vAssetSharingDSRequestTrackingDetailReferenceTitle1ALL || IF(vAssetSharingDSRequestTrackingDetailReferenceTitle1 &lt;&gt; "", SEARCH(vAssetSharingDSRequestTrackingDetailReferenceTitle1, 'AssetSharingDS'[RequestTrackingDetail.ReferenceTitle], 1, 0) &gt; 0, TRUE))))</Statement>
+EVALUATE SUMMARIZECOLUMNS('AssetSharingDS'[ShareType.ShareTypeName], 'AssetSharingDS'[SharedOn], 'AssetSharingDS'[TrackingStatus.StatusName], 'AssetSharingDS'[TimeRemaining], 'AssetSharingDS'[RequestTrackingDetail.ReferenceTitle], 'AssetSharingDS'[Recipients], 'AssetSharingDS'[GroupedData.User.UserInfo.Email], FILTER(VALUES('AssetSharingDS'[RequestTrackingDetail.ReferenceTitle]), (vAssetSharingDSRequestTrackingDetailReferenceTitle1ALL || IF(vAssetSharingDSRequestTrackingDetailReferenceTitle1 &lt;&gt; "", SEARCH(vAssetSharingDSRequestTrackingDetailReferenceTitle1, 'AssetSharingDS'[RequestTrackingDetail.ReferenceTitle], 1, 0) &gt; 0, TRUE))))</Statement>
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>AssetSharingDSRequestTrackingDetailReferenceTitle</Name>
@@ -156,7 +167,7 @@ EVALUATE SUMMARIZECOLUMNS('AssetSharingDS'[ShareType.ShareTypeName], 'AssetShari
         </rd:DesignerState>
         <CommandText>DEFINE VAR vAssetSharingDSRequestTrackingDetailReferenceTitle1 = IF(PATHLENGTH(@AssetSharingDSRequestTrackingDetailReferenceTitle) = 1, IF(@AssetSharingDSRequestTrackingDetailReferenceTitle &lt;&gt; "", @AssetSharingDSRequestTrackingDetailReferenceTitle, BLANK()), IF(PATHITEM(@AssetSharingDSRequestTrackingDetailReferenceTitle, 2) &lt;&gt; "", PATHITEM(@AssetSharingDSRequestTrackingDetailReferenceTitle, 2), BLANK()))
 VAR vAssetSharingDSRequestTrackingDetailReferenceTitle1ALL = PATHLENGTH(@AssetSharingDSRequestTrackingDetailReferenceTitle) &gt; 1 &amp;&amp; PATHITEM(@AssetSharingDSRequestTrackingDetailReferenceTitle, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('AssetSharingDS'[ShareType.ShareTypeName], 'AssetSharingDS'[SharedOn], 'AssetSharingDS'[TrackingStatus.StatusName], 'AssetSharingDS'[TimeRemaining], 'AssetSharingDS'[RequestTrackingDetail.ReferenceTitle], 'AssetSharingDS'[Recipients], FILTER(VALUES('AssetSharingDS'[RequestTrackingDetail.ReferenceTitle]), (vAssetSharingDSRequestTrackingDetailReferenceTitle1ALL || IF(vAssetSharingDSRequestTrackingDetailReferenceTitle1 &lt;&gt; "", SEARCH(vAssetSharingDSRequestTrackingDetailReferenceTitle1, 'AssetSharingDS'[RequestTrackingDetail.ReferenceTitle], 1, 0) &gt; 0, TRUE))))</CommandText>
+EVALUATE SUMMARIZECOLUMNS('AssetSharingDS'[ShareType.ShareTypeName], 'AssetSharingDS'[SharedOn], 'AssetSharingDS'[TrackingStatus.StatusName], 'AssetSharingDS'[TimeRemaining], 'AssetSharingDS'[RequestTrackingDetail.ReferenceTitle], 'AssetSharingDS'[Recipients], 'AssetSharingDS'[GroupedData.User.UserInfo.Email], FILTER(VALUES('AssetSharingDS'[RequestTrackingDetail.ReferenceTitle]), (vAssetSharingDSRequestTrackingDetailReferenceTitle1ALL || IF(vAssetSharingDSRequestTrackingDetailReferenceTitle1 &lt;&gt; "", SEARCH(vAssetSharingDSRequestTrackingDetailReferenceTitle1, 'AssetSharingDS'[RequestTrackingDetail.ReferenceTitle], 1, 0) &gt; 0, TRUE))))</CommandText>
       </Query>
       <Fields>
         <Field Name="ShareType_ShareTypeName">
@@ -182,6 +193,10 @@ EVALUATE SUMMARIZECOLUMNS('AssetSharingDS'[ShareType.ShareTypeName], 'AssetShari
         <Field Name="Recipients">
           <rd:TypeName>System.String</rd:TypeName>
           <DataField>AssetSharingDS[Recipients]</DataField>
+        </Field>
+        <Field Name="GroupedData_User_UserInfo_Email">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>AssetSharingDS[GroupedData.User.UserInfo.Email]</DataField>
         </Field>
       </Fields>
     </DataSet>
@@ -277,7 +292,7 @@ EVALUATE SUMMARIZECOLUMNS('AssetSharingDS'[ShareType.ShareTypeName], 'AssetShari
                   <Width>54.68055mm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>35.20723mm</Width>
+                  <Width>58.63168mm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>47.4839mm</Width>
@@ -880,15 +895,15 @@ EVALUATE SUMMARIZECOLUMNS('AssetSharingDS'[ShareType.ShareTypeName], 'AssetShari
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox1">
-                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                        <Textbox Name="GroupedData_User_UserInfo_Email">
+                          <rd:DefaultName>GroupedData_User_UserInfo_Email</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!GroupedData_User_UserInfo_Email.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1141,7 +1156,7 @@ EVALUATE SUMMARIZECOLUMNS('AssetSharingDS'[ShareType.ShareTypeName], 'AssetShari
             <Top>0mm</Top>
             <Left>0mm</Left>
             <Height>26.81666mm</Height>
-            <Width>346.87446mm</Width>
+            <Width>370.29891mm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1156,7 +1171,7 @@ EVALUATE SUMMARIZECOLUMNS('AssetSharingDS'[ShareType.ShareTypeName], 'AssetShari
           </Border>
         </Style>
       </Body>
-      <Width>346.87446mm</Width>
+      <Width>370.29891mm</Width>
       <Page>
         <PageHeader>
           <Height>15.875mm</Height>
@@ -1253,8 +1268,8 @@ EVALUATE SUMMARIZECOLUMNS('AssetSharingDS'[ShareType.ShareTypeName], 'AssetShari
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0mm</Top>
-              <Left>296.07446mm</Left>
+              <Top>0.35277mm</Top>
+              <Left>319.49891mm</Left>
               <Height>15.09889mm</Height>
               <Width>50.8mm</Width>
               <ZIndex>1</ZIndex>

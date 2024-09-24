@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1811.11</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2024-09-20T16:57:20.8990750Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2024-09-24T06:24:00.9741337Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -97,6 +97,28 @@
                     <ItemCaption>Categories</ItemCaption>
                     <UniqueName>true</UniqueName>
                   </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>ExpiredAssetDS</DimensionName>
+                      <HierarchyName>ExpireOn</HierarchyName>
+                      <HierarchyUniqueName>[ExpiredAssetDS].[ExpireOn]</HierarchyUniqueName>
+                      <LevelName>ExpireOn</LevelName>
+                      <UniqueName>[ExpiredAssetDS].[ExpireOn].[ExpireOn]</UniqueName>
+                    </ID>
+                    <ItemCaption>ExpireOn</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
+                  <Item>
+                    <ID xsi:type="Level">
+                      <DimensionName>ExpiredAssetDS</DimensionName>
+                      <HierarchyName>RetentionPolicy</HierarchyName>
+                      <HierarchyUniqueName>[ExpiredAssetDS].[RetentionPolicy]</HierarchyUniqueName>
+                      <LevelName>RetentionPolicy</LevelName>
+                      <UniqueName>[ExpiredAssetDS].[RetentionPolicy].[RetentionPolicy]</UniqueName>
+                    </ID>
+                    <ItemCaption>RetentionPolicy</ItemCaption>
+                    <UniqueName>true</UniqueName>
+                  </Item>
                 </Items>
               </Select>
               <AutoExecute>false</AutoExecute>
@@ -122,7 +144,7 @@
             <Query>
               <Statement>DEFINE VAR vExpiredAssetDSUsers1 = IF(PATHLENGTH(@ExpiredAssetDSUsers) = 1, IF(@ExpiredAssetDSUsers &lt;&gt; "", @ExpiredAssetDSUsers, BLANK()), IF(PATHITEM(@ExpiredAssetDSUsers, 2) &lt;&gt; "", PATHITEM(@ExpiredAssetDSUsers, 2), BLANK()))
 VAR vExpiredAssetDSUsers1ALL = PATHLENGTH(@ExpiredAssetDSUsers) &gt; 1 &amp;&amp; PATHITEM(@ExpiredAssetDSUsers, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[Name], 'ExpiredAssetDS'[Unit.Name], 'ExpiredAssetDS'[CapturedOn], 'ExpiredAssetDS'[Users], 'ExpiredAssetDS'[Categories], FILTER(VALUES('ExpiredAssetDS'[Users]), (vExpiredAssetDSUsers1ALL || IF(vExpiredAssetDSUsers1 &lt;&gt; "", SEARCH(vExpiredAssetDSUsers1, 'ExpiredAssetDS'[Users], 1, 0) &gt; 0, TRUE))))</Statement>
+EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[Name], 'ExpiredAssetDS'[Unit.Name], 'ExpiredAssetDS'[CapturedOn], 'ExpiredAssetDS'[Users], 'ExpiredAssetDS'[Categories], 'ExpiredAssetDS'[ExpireOn], 'ExpiredAssetDS'[RetentionPolicy], FILTER(VALUES('ExpiredAssetDS'[Users]), (vExpiredAssetDSUsers1ALL || IF(vExpiredAssetDSUsers1 &lt;&gt; "", SEARCH(vExpiredAssetDSUsers1, 'ExpiredAssetDS'[Users], 1, 0) &gt; 0, TRUE))))</Statement>
               <ParameterDefinitions>
                 <ParameterDefinition>
                   <Name>ExpiredAssetDSUsers</Name>
@@ -145,7 +167,7 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[Name], 'ExpiredAssetDS'[Unit.Name], '
         </rd:DesignerState>
         <CommandText>DEFINE VAR vExpiredAssetDSUsers1 = IF(PATHLENGTH(@ExpiredAssetDSUsers) = 1, IF(@ExpiredAssetDSUsers &lt;&gt; "", @ExpiredAssetDSUsers, BLANK()), IF(PATHITEM(@ExpiredAssetDSUsers, 2) &lt;&gt; "", PATHITEM(@ExpiredAssetDSUsers, 2), BLANK()))
 VAR vExpiredAssetDSUsers1ALL = PATHLENGTH(@ExpiredAssetDSUsers) &gt; 1 &amp;&amp; PATHITEM(@ExpiredAssetDSUsers, 1, 1) &lt; 1
-EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[Name], 'ExpiredAssetDS'[Unit.Name], 'ExpiredAssetDS'[CapturedOn], 'ExpiredAssetDS'[Users], 'ExpiredAssetDS'[Categories], FILTER(VALUES('ExpiredAssetDS'[Users]), (vExpiredAssetDSUsers1ALL || IF(vExpiredAssetDSUsers1 &lt;&gt; "", SEARCH(vExpiredAssetDSUsers1, 'ExpiredAssetDS'[Users], 1, 0) &gt; 0, TRUE))))</CommandText>
+EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[Name], 'ExpiredAssetDS'[Unit.Name], 'ExpiredAssetDS'[CapturedOn], 'ExpiredAssetDS'[Users], 'ExpiredAssetDS'[Categories], 'ExpiredAssetDS'[ExpireOn], 'ExpiredAssetDS'[RetentionPolicy], FILTER(VALUES('ExpiredAssetDS'[Users]), (vExpiredAssetDSUsers1ALL || IF(vExpiredAssetDSUsers1 &lt;&gt; "", SEARCH(vExpiredAssetDSUsers1, 'ExpiredAssetDS'[Users], 1, 0) &gt; 0, TRUE))))</CommandText>
       </Query>
       <Fields>
         <Field Name="CapturedOn">
@@ -167,6 +189,14 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[Name], 'ExpiredAssetDS'[Unit.Name], '
         <Field Name="Name">
           <rd:TypeName>System.String</rd:TypeName>
           <DataField>ExpiredAssetDS[Name]</DataField>
+        </Field>
+        <Field Name="ExpireOn">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ExpiredAssetDS[ExpireOn]</DataField>
+        </Field>
+        <Field Name="RetentionPolicy">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>ExpiredAssetDS[RetentionPolicy]</DataField>
         </Field>
       </Fields>
     </DataSet>
@@ -1055,15 +1085,15 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[Name], 'ExpiredAssetDS'[Unit.Name], '
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox2">
-                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                        <Textbox Name="ExpireOn">
+                          <rd:DefaultName>ExpireOn</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!ExpireOn.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -1113,15 +1143,15 @@ EVALUATE SUMMARIZECOLUMNS('ExpiredAssetDS'[Name], 'ExpiredAssetDS'[Unit.Name], '
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox20">
-                          <rd:DefaultName>Textbox20</rd:DefaultName>
+                        <Textbox Name="RetentionPolicy">
+                          <rd:DefaultName>RetentionPolicy</rd:DefaultName>
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!RetentionPolicy.Value</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontSize>12pt</FontSize>
