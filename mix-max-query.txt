@@ -7,3 +7,15 @@ ROW("MinDate", MinDate, "MaxDate", MaxDate)
 
 
 EVALUATE VALUES ('AssetNotViewedDS'[User.UserInfo.FName]) 
+
+
+-------------------------------------------
+Last 30 days.
+EVALUATE 
+VAR MaxDate = CALCULATE(MAX('AssetViewedDS'[AssetViewReason.ViewDateTime]))
+VAR MinDate = MaxDate - 30
+RETURN 
+ROW("MinDate", MinDate, "MaxDate", MaxDate)
+
+--------------------------------------------
+Format((Parameters!<your_parameter_name>.Value), "yyyy-MM-dd")
